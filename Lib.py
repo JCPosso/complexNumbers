@@ -28,19 +28,20 @@ class complejo:
             return (real,img)
        
         def divide(self,b):
-            #Retorna division de dos numeros complejos
+            #Retorna division de dos numeros complejos a 2  decimales
             x=(self.real*b.real+self.img*b.img)
             y=(b.real*self.img-self.real*b.img)
             divisor=( b.real**2)+ (b.img**2) 
             if(divisor==0):
                 return ("Divisor is zero!!")
             else :
-                return (x/divisor,y/divisor)
+                return (round(x/divisor,2),round(y/divisor,2))
               
         def modulo(self):
             #Retorna el modulo del numero complejo
             mod= math.sqrt(self.real**2+self.img**2)
-            return mod
+
+            return (round(mod,2))
 
         def conjugado(self):
             #Retorna el conjugado del numero complejo
@@ -48,13 +49,13 @@ class complejo:
 
         def aPolar(self):
            #Retorna Coordenada polar del numero complejo
-            fhi=math.sqrt(self.real**2+self.img**2)
-            ang=math.atan(self.img/self.real)
+            fhi=round(math.sqrt(self.real**2+self.img**2),2)
+            ang=round(math.atan(self.img/self.real),2)
             if( self.real==0 ):
                 return ("NOT possible to convert!")
             else :
                 return (fhi,ang)
               
-        def fase(a):
+        def fase(self):
             #Retorna la fase del numero complejo
-            return math.atan2(self.img,self.real)
+            return round(math.atan2(self.img,self.real),2)
