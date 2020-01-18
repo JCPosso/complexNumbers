@@ -8,6 +8,7 @@ class complejo:
         def __init__(self,r,i):
             self.real= r
             self.img= i
+            
         def suma(self,b):
             #suma de dos numeros complejos
             real = self.real + b.real
@@ -57,10 +58,3 @@ class complejo:
         def fase(a):
             #Retorna la fase del numero complejo
             return math.atan2(self.img,self.real)
-
-
- 
-
-
-
-
