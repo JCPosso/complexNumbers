@@ -34,9 +34,7 @@ def cartesianToPolar(a):
         return ("NOT possible to convert!")
     else :
         return (fhi,ang)
-    /*jesusuuit
-        
-        */
+  //jesusuuit
   def fase(a):
     return math.atan2(a[1],a[0])
 
