@@ -12,7 +12,9 @@ class complejo:
             """Override"""
             if isinstance(other, complejo):
                 return( self.real == other.real and self.img == other.img)
-            return False   
+            return False
+
+        
         def suma(self,b):
             #suma de dos numeros complejos
             real = self.real + b.real
@@ -53,11 +55,11 @@ class complejo:
 
         def aPolar(self):
            #Retorna Coordenada polar del numero complejo
-            fhi=round(math.sqrt(self.real**2+self.img**2),2)
-            ang=round(math.atan(self.img/self.real),2)
             if( self.real==0 ):
                 return ("NOT possible to convert!")
             else :
+                fhi=round(math.sqrt(self.real**2+self.img**2),2)
+                ang=round(math.atan(self.img/self.real),2)
                 return complejo(fhi,ang)
               
         def fase(self):

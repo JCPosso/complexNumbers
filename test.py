@@ -78,9 +78,10 @@ class TestMathMethods(unittest.TestCase):
     def test01_pasarAPolar(self):
         r=c.aPolar()
         self.assertEqual(r,complejo(2.24, 0.46))
-    def test02_pasarAPolar(self):
-        r=a.aPolar()
-        self.assertEqual(r,complejo(3.61, 0.59))
+    def test02_noPasarAPolarSiDivisorEsCero(self):
+        d=complejo(0,0)
+        x=d.aPolar()
+        self.assertEqual(x,"NOT possible to convert!")
     def test03_pasarAPolar(self):
         r=b.aPolar()
         self.assertEqual(r,complejo(6.4, 0.67))
