@@ -9,7 +9,7 @@ class complejo:
             self.real= r
             self.img= i
         def __eq__(self, other):
-            """Overrides the default implementation"""
+            """Override"""
             if isinstance(other, complejo):
                 return( self.real == other.real and self.img == other.img)
             return False   
@@ -63,3 +63,7 @@ class complejo:
         def fase(self):
             #Retorna la fase del numero complejo
             return round(math.atan2(self.img,self.real),2)
+
+        def __str__(self):
+                cadena=str(self.real)+","+str(self.img)+"i"
+                return cadena

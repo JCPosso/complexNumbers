@@ -64,18 +64,37 @@ class TestMathMethods(unittest.TestCase):
         self.assertEqual(x,"Divisor is zero!!")
         
     # Se evalua  modulo
-    def test_modulo(self):
+    def test01_modulo(self):
         r=a.modulo()
         self.assertEqual(r,(3.61))
+    def test02_modulo(self):
+        r=b.modulo()
+        self.assertEqual(r,(6.4))
+    def test03_modulo(self):
+        r=c.modulo()
+        self.assertEqual(r,(2.24))
         
     # Se evaluan la conversion de cartesiano a polar         
-    def test_pasarAPolar(self):
+    def test01_pasarAPolar(self):
         r=c.aPolar()
         self.assertEqual(r,complejo(2.24, 0.46))
+    def test02_pasarAPolar(self):
+        r=a.aPolar()
+        self.assertEqual(r,complejo(3.61, 0.59))
+    def test03_pasarAPolar(self):
+        r=b.aPolar()
+        self.assertEqual(r,complejo(6.4, 0.67))
+        
     # Se evaluan fase de un numero complejo          
-    def test_fase(self):
+    def test01_fase(self):
         r=b.fase()
         self.assertEqual(r,(0.67))
+    def test02_fase(self):
+        r=c.fase()
+        self.assertEqual(r,(0.46 ))
+    def test03_fase(self):
+        r=a.fase()
+        self.assertEqual(r,(0.59))
 
 
 if __name__ == '__main__':
