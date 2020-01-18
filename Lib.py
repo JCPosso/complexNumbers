@@ -1,42 +1,62 @@
 import math;
+"""Librería computación Cuántica: Números complejos
+   librería para hacer operaciones entre números complejos.
+   @author (Juan Camilo Posso G.) 
+   @version (1.0 or 16/01/2020)
+"""
+class complejo:
+        def __init__(self,r,i):
+            self.real= r
+            self.img= i
+        def suma(self,b):
+            #suma de dos numeros complejos
+            real = self.real + b.real
+            img  = self.img + b.img
+            return (real,img)
+       
+        def resta(self,b):
+            #suma de dos numeros complejos
+            real = self.real - b.real
+            img  = self.img - b.img
+            return (real,img)
 
-def suma(a,b):
-    n1=a[0]+b[0]
-    n2=a[1]+b[1]
-    return (n1,n2)
-def resta(a,b):
-    n1=a[0]-b[0]
-    n2=a[1]-b[1]
-    return (n1,n2)
-def multiplicacion(a,b):
-    return (a[0]*b[0]-a[1]*b[1],a[0]*b[1]+b[0]*a[1])
-def division(a,b):
-    x1=(a[0]*b[0]+a[1]+b[1])
-    x2=( b[0]**2)+ (b[1]**2) 
-    y1=(b[0]*a[1]-a[0]*b[1])
-    y2=((b[0]**2)+(b[1]**2))
-  
-    if( b[0]==0 or b[1]==0):
-        return ("Divisor is zero!!")
-    else :
-        return (x1/x2,y1/y2)
-def modulo(a):
-    mod= math.sqrt(a[0]**2+a[1]**2)
-    return mod
+        def multiplica(self,b):
+            #Retorna multiplicacion de dos numeros complejos
+            real=self.real*b.real - self.img*b.img
+            img= self.real*b.img + b.real*self.img
+            return (real,img)
+       
+        def divide(self,b):
+            #Retorna division de dos numeros complejos
+            x=(self.real*b.real+self.img*b.img)
+            y=(b.real*self.img-self.real*b.img)
+            divisor=( b.real**2)+ (b.img**2) 
+            if(divisor==0):
+                return ("Divisor is zero!!")
+            else :
+                return (x/divisor,y/divisor)
+              
+        def modulo(self):
+            #Retorna el modulo del numero complejo
+            mod= math.sqrt(self.real**2+self.img**2)
+            return mod
 
-def conjugado(a):
-    return (a[0],a[1]*(-1))
+        def conjugado(self):
+            #Retorna el conjugado del numero complejo
+            return (self.real*-1,self.img*-1)
 
-def cartesianToPolar(a):
-    fhi=math.sqrt(a[0]**2+a[1]**2)
-    ang=math.atan(a[1]/a[0])
-    if( b[0]==0 or b[1]==0):
-        return ("NOT possible to convert!")
-    else :
-        return (fhi,ang)
-  //jesusuuit
-  def fase(a):
-    return math.atan2(a[1],a[0])
+        def aPolar(self):
+           #Retorna Coordenada polar del numero complejo
+            fhi=math.sqrt(self.real**2+self.img**2)
+            ang=math.atan(self.img/self.real)
+            if( self.real==0 ):
+                return ("NOT possible to convert!")
+            else :
+                return (fhi,ang)
+              
+        def fase(a):
+            #Retorna la fase del numero complejo
+            return math.atan2(self.img,self.real)
 
 
  
