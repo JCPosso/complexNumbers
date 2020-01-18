@@ -8,24 +8,28 @@ class complejo:
         def __init__(self,r,i):
             self.real= r
             self.img= i
-            
+        def __eq__(self, other):
+            """Overrides the default implementation"""
+            if isinstance(other, complejo):
+                return( self.real == other.real and self.img == other.img)
+            return False   
         def suma(self,b):
             #suma de dos numeros complejos
             real = self.real + b.real
             img  = self.img + b.img
-            return (real,img)
+            return complejo(real,img)
        
         def resta(self,b):
             #suma de dos numeros complejos
             real = self.real - b.real
             img  = self.img - b.img
-            return (real,img)
+            return complejo(real,img)
 
         def multiplica(self,b):
             #Retorna multiplicacion de dos numeros complejos
             real=self.real*b.real - self.img*b.img
             img= self.real*b.img + b.real*self.img
-            return (real,img)
+            return complejo(real,img)
        
         def divide(self,b):
             #Retorna division de dos numeros complejos a 2  decimales
@@ -35,7 +39,7 @@ class complejo:
             if(divisor==0):
                 return ("Divisor is zero!!")
             else :
-                return (round(x/divisor,2),round(y/divisor,2))
+                return complejo(round(x/divisor,2),round(y/divisor,2))
               
         def modulo(self):
             #Retorna el modulo del numero complejo
@@ -45,7 +49,7 @@ class complejo:
 
         def conjugado(self):
             #Retorna el conjugado del numero complejo
-            return (self.real*-1,self.img*-1)
+            return complejo(self.real*-1,self.img*-1)
 
         def aPolar(self):
            #Retorna Coordenada polar del numero complejo
@@ -54,7 +58,7 @@ class complejo:
             if( self.real==0 ):
                 return ("NOT possible to convert!")
             else :
-                return (fhi,ang)
+                return complejo(fhi,ang)
               
         def fase(self):
             #Retorna la fase del numero complejo
