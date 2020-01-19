@@ -84,9 +84,11 @@ class complejo:
         def __str__(self):
                 s1=str(self.real)
                 s2=str(self.img)
-                if(self.img==1):s2="+i"
-                if (self.img==0):s2=""
-                if(self.img>1):s2="+"+s2+"i"
+                if(self.img==-1):s2="-"
+                if (self.img==0 or self.img==1 ):s2=""
+                if(self.img>=1):s2="+"+s2+"i"
                 if(self.img<1):s2=s2+"i"
+                if (self.img==0 and self.img==0 ):return '0'
+                
                 cadena=s1+s2
                 return cadena

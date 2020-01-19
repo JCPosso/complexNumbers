@@ -75,6 +75,17 @@ class TestMathMethods(unittest.TestCase):
         r=c.modulo()
         self.assertEqual(r,(2.24))
         
+    #se evalua el conjugado
+    def test01_conjugado(self):
+        r=a.conjugado()
+        self.assertEqual(r,'3-2i')
+    def test02_conjugado(self):
+        r=b.conjugado()
+        self.assertEqual(r,'5-4i')
+    def test03_conjugado(self):
+        r=c.conjugado()
+        self.assertEqual(r,'2-i')
+        
     # Se evaluan la conversion de cartesiano a polar         
     def test01_pasarAPolar(self):
         r=c.aPolar()
