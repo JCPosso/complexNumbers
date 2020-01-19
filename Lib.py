@@ -19,19 +19,19 @@ class complejo:
             #suma de dos numeros complejos
             real = self.real + b.real
             img  = self.img + b.img
-            return complejo(real,img)
+            return str(complejo(real,img))
        
         def resta(self,b):
             #suma de dos numeros complejos
             real = self.real - b.real
             img  = self.img - b.img
-            return complejo(real,img)
+            return str(complejo(real,img))
 
         def multiplica(self,b):
             #Retorna multiplicacion de dos numeros complejos
             real=self.real*b.real - self.img*b.img
             img= self.real*b.img + b.real*self.img
-            return complejo(real,img)
+            return str(complejo(real,img) )
        
         def divide(self,b):
             #Retorna division de dos numeros complejos a 2  decimales
@@ -41,7 +41,7 @@ class complejo:
             if(divisor==0):
                 return ("Divisor is zero!!")
             else :
-                return complejo(round(x/divisor,2),round(y/divisor,2))
+                return str(complejo(round(x/divisor,2),round(y/divisor,2)))
               
         def modulo(self):
             #Retorna el modulo del numero complejo
@@ -51,7 +51,7 @@ class complejo:
 
         def conjugado(self):
             #Retorna el conjugado del numero complejo
-            return complejo(self.real*-1,self.img*-1)
+            return str(complejo(self.real,self.img*-1))
 
         def aPolar(self):
            #Retorna Coordenada polar del numero complejo
@@ -64,8 +64,29 @@ class complejo:
               
         def fase(self):
             #Retorna la fase del numero complejo
-            return round(math.atan2(self.img,self.real),2)
+                
+            if(self.real==0):return "indefinido!!"
+            res= abs(math.atan(self.img/self.real))
+            
+            #cuadrante 2
+            if(self.img>0 and  self.real<0):res=math.pi-res
+            #cuadrante 3
+            if(self.img<0 and  self.real<0):res=math.pi+res
+            #cuadrante 4
+            if(self.img<0 and  self.real>0):res=math.pi*2-res
+            
+
+            # convertir de radianes a grados
+            res=round(res*(180/math.pi),2)
+            
+            return str(res)+"°Grados"
 
         def __str__(self):
-                cadena=str(self.real)+","+str(self.img)+"i"
+                s1=str(self.real)
+                s2=str(self.img)
+                if(self.img==1):s2="+i"
+                if (self.img==0):s2=""
+                if(self.img>1):s2="+"+s2+"i"
+                if(self.img<1):s2=s2+"i"
+                cadena=s1+s2
                 return cadena
