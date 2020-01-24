@@ -6,15 +6,23 @@ from Lib import *
    @version (1.0 or 16/01/2020)
 """
 class matrizComplejo:
-        def __init__(self,c,b):
-            self.c = c[0]
-            self.b=b
+        def __init__(self,c):
+            self.c=c
+            for i in range(len(self.c)):
+                for j in range(len(self.c[0])):
+                        self.c[i][j]=complejo(self.c[i][j][0],self.c[i][j][1])
             
-        def sumaVectores(self,V,W):
+        def sumaVectores(self,W):
             #suma de dos vectores de complejos
-             res=matrizComplejo([[0]*len(self.c[0])])
-             for i in range(len(self.c[0])):
-                 res.c[0][i]=V.c[0][i]+W.c[0][i]
-                 print(res.c[0][i])
-             return res
-            
+             i=0
+             res=matrizComplejo([[[0,0]]*len(self.c[i])])
+             for j in range(len(self.c[i])):
+                 res.c[i][j]=(self.c[i][j]).suma(W.c[i][j])
+             print(res)
+        
+        def __str__(self):
+              for i in range(len(self.c)):
+                      for j in range(len(self.c[0])):
+                              print(self.c[i][j])
+              return""  
+                
