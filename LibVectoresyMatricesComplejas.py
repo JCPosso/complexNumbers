@@ -17,6 +17,12 @@ class vectorComplejo:
              for j in range(len(self.c)):
                  res.c[j]=(self.c[j]).suma(W.c[j])
              return res
+        def resta(self,W):
+            #suma de dos vectores de complejos
+             res=vectorComplejo([[0,0]]*len(self.c))
+             for j in range(len(self.c)):
+                 res.c[j]=(self.c[j]).resta(W.c[j])
+             return res
         def inversa(self):
             #suma de dos vectores de complejos
              for j in range(len(self.c)):
@@ -25,7 +31,23 @@ class vectorComplejo:
         def multiplicaEscalar(self,e):
                 for j in range(len(self.c)):
                         self.c[j]=(self.c[j]).multiplica(complejo(e,0))
-                return self 
+                return self
+        def producto(self,v2):
+                res=vectorComplejo([[0,0]]*len(self.c))
+                for j in range(len(self.c)):
+                        self.c[j]=(self.c[j]).multiplica(v2.c[j])
+                return self
+        def norma(self,v2):
+                res=0
+                for j in range(len(self.c)):
+                        res+=(self.c[j]).multiplica(v2.c[j])
+                return round(math.sqrt(res),2)
+        def distancia(self,v2):
+                res=0
+                for j in range(len(self.c)):
+                        res+=( (self.c[j]).resta(v2.c[j])).multiplica((self.c[j]).resta(v2.c[j]))
+                return round(math.sqrt(res),2)
+        
         def __str__(self):
                 s=""
                 for j in range(len(self.c)):
@@ -85,6 +107,15 @@ class matrizCompleja:
         def adjunta(self):
              self=(self.transpuesta()).conjugada()
              return self
+
+        def alcanceSobre(self,vComplejo):
+             if(isinstance(vComplejo ,vectorComplejo) ): 
+                     res=vectorComplejo([[0,0]]*len(vComplejo))
+                     for j in range(len(self.c)):
+                            for k in range(len(self.c[0])):
+                                  res.c[k] =res.c[k].suma( self.c[j][k].multiplica(vcomplejo[k]) )
+                     return res
+             return "no es un vector!"
         
         def __str__(self):
              s=""
