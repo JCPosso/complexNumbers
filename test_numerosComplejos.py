@@ -1,5 +1,5 @@
 import unittest
-from Lib import *
+from LibreriaNumerosComplejos import *
 """Librería computación Cuántica: Números complejos
    pruebaas de unidad a la libreria Py.py donde se evaluaran
    sus distintas propiedes y casos arbitrarios

@@ -1,5 +1,5 @@
 import math;
-from Lib import *    
+from LibreriaNumerosComplejos import *    
 """Librería computación Cuántica: Números complejos
    librería para hacer operaciones entre vectores y matrices de  complejos.
    @author (Juan Camilo Posso G.) 
