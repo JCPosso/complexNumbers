@@ -19,19 +19,19 @@ class complejo:
             #suma de dos numeros complejos
             real = self.real + b.real
             img  = self.img + b.img
-            return str(complejo(real,img))
+            return complejo(real,img)
        
         def resta(self,b):
             #suma de dos numeros complejos
             real = self.real - b.real
             img  = self.img - b.img
-            return str(complejo(real,img))
+            return complejo(real,img)
 
         def multiplica(self,b):
             #Retorna multiplicacion de dos numeros complejos
             real=self.real*b.real - self.img*b.img
             img= self.real*b.img + b.real*self.img
-            return str(complejo(real,img) )
+            return complejo(real,img)
        
         def divide(self,b):
             #Retorna division de dos numeros complejos a 2  decimales
@@ -41,7 +41,7 @@ class complejo:
             if(divisor==0):
                 return ("Divisor is zero!!")
             else :
-                return str(complejo(round(x/divisor,2),round(y/divisor,2)))
+                return complejo(round(x/divisor,2),round(y/divisor,2))
               
         def modulo(self):
             #Retorna el modulo del numero complejo
@@ -51,7 +51,7 @@ class complejo:
 
         def conjugado(self):
             #Retorna el conjugado del numero complejo
-            return str(complejo(self.real,self.img*-1))
+            return complejo(self.real,self.img*-1)
 
         def aPolar(self):
            #Retorna Coordenada polar del numero complejo
@@ -83,11 +83,12 @@ class complejo:
 
         def __str__(self):
                 s1=str(self.real)
-                
-                if (self.img==1):s2="i"
-                if (self.img==-1):s2="-i"
-                else:s2=str(self.img)+"i"
-                
+                if(self.img!=1 and self.img!=-1 ):
+                        s2=str(self.img)+"i"
+                else:
+                        if (self.img==-1):s2="-i"
+                        else :s2="i"
+
                 if(self.real==0):
                         if (self.img==0):return '0'
                         else            :return s2
