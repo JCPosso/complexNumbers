@@ -19,6 +19,10 @@ class TestMathMethods(unittest.TestCase):
         aa=a.suma(b)
         bb= b.suma(a)
         self.assertEqual(aa,bb)
+    def test_sumaEsAsociativa(self):
+        r1= (a.suma(b)).suma(c)
+        r2= a.suma((b).suma(c))
+        self.assertEqual(r1,r2)
     def test_identidadDeSuma(self): 
         d= complejo(0,0)
         r=a.suma(d)
@@ -49,7 +53,19 @@ class TestMathMethods(unittest.TestCase):
         d=complejo(1,0)
         x=a.multiplica(d)
         self.assertEqual(x,a)
-
+    def test_multiplicacionEsAsociativa(self):
+        r1= (a.multiplica(b)).multiplica(c)
+        r2= a.multiplica((b).multiplica(c))
+        self.assertEqual(r1,r2)
+    def test_multiplicacionEsConmutativa(self):
+        aa=a.multiplica(b)
+        bb= b.multiplica(a)
+        self.assertEqual(aa,bb)
+        
+    def test_multiplicacionDistribuyeSobreAdicion(self):
+        r1=a.multiplica(b.suma(c))
+        r2=( a.multiplica(b)).suma(a.multiplica(c) )
+        self.assertEqual(r1,r2)
     # Se evaluan las propiedades de la division         
     def test_division(self):
         x=a.divide(b)
