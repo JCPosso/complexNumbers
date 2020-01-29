@@ -65,7 +65,12 @@ class matrizCompleja:
                 for i in range(f):
                         m.append([ [0,0] ]*c)
                 return matrizCompleja(m)
-
+        def unitaria(c):
+                m=[]
+                temp=matrizCompleja.iniciar(c,c)
+                for i in range(c):
+                        temp[i][i]=1
+                return matrizCompleja(temp)
         
         def suma(self,W):
             #suma de dos vectores de complejos
@@ -82,6 +87,13 @@ class matrizCompleja:
                     for k in range(len(self.c[0])):
                       self.c[j][k]=(self.c[j][k]).multiplica(complejo(-1,0))
              return self
+        
+        def multiplica(self,W):
+             res=matrizCompleja.iniciar(len(self.c),len(self.W[0]))
+             for j in range(len(self.c)):
+                    for k in range(len(self.c[0])):
+                        res.c[j][k]=(self.c[j][k]).multiplica(self.W[j][k])
+             return res
         
         def multiplicaEscalar(self,e):
              for j in range(len(self.c)):
@@ -104,10 +116,11 @@ class matrizCompleja:
                     for k in range(len(self.c[0])):
                         self.c[j][k]=self.c[j][k].conjugado()
              return self
+        
         def adjunta(self):
              self=(self.transpuesta()).conjugada()
              return self
-
+        
         def alcanceSobre(self,vComplejo):
              if(isinstance(vComplejo ,vectorComplejo) ): 
                      res=vectorComplejo([[0,0]]*len(vComplejo))
@@ -116,6 +129,18 @@ class matrizCompleja:
                                   res.c[k] =res.c[k].suma( self.c[j][k].multiplica(vcomplejo[k]) )
                      return res
              return "no es un vector!"
+        
+        def isHermitian(self):
+             if( self!= self.conjugada()):
+                               return "ISN´T HERMITIAN!"
+             return self
+        
+        def isUnitary(self):
+             if( self.multiplica(self.adjunta()) != self.adjunta().multiplica(self) ):
+                               return "ISN´T UNITARY!"
+             return self
+        
+
         
         def __str__(self):
              s=""
