@@ -79,9 +79,6 @@ class matrizCompleja:
         def transpuesta(self):
              m=len(self.c)
              n=len(self.c[0])
-             
-             if(m!=n):
-                     self.vectorMap()
              cont=0
              for j in range(m):
                      cont+=1
@@ -149,10 +146,10 @@ class vectorComplejo(matrizCompleja):
                 print(( self.conjugada() ).multiplica(W))
                 return( self.conjugada() ).multiplica(W)
         def transpuesta(self):
-                m=[]
+                m=iniciar(len(self.c),len(self.c[0]))
                 for j in range(len(self.c)):
                         for k in range(len(self.c[0])):
-                                m.append( self.c[j][k])
+                                m=m.suma(self.c[j][k])
                 return m
                 
 
