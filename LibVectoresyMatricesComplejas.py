@@ -5,55 +5,7 @@ from LibreriaNumerosComplejos import *
    @author (Juan Camilo Posso G.) 
    @version (1.0 or 16/01/2020)
 """
-class vectorComplejo:
-        def __init__(self,c):
-            self.c=c
-            for j in range(len(self.c)):
-                        self.c[j]=complejo(self.c[j][0],self.c[j][1])
-            
-        def suma(self,W):
-            #suma de dos vectores de complejos
-             res=vectorComplejo([[0,0]]*len(self.c))
-             for j in range(len(self.c)):
-                 res.c[j]=(self.c[j]).suma(W.c[j])
-             return res
-        def resta(self,W):
-            #suma de dos vectores de complejos
-             res=vectorComplejo([[0,0]]*len(self.c))
-             for j in range(len(self.c)):
-                 res.c[j]=(self.c[j]).resta(W.c[j])
-             return res
-        def inversa(self):
-            #suma de dos vectores de complejos
-             for j in range(len(self.c)):
-                 self.c[j]=(self.c[j]).multiplica(complejo(-1,0))
-             return self
-        def multiplicaEscalar(self,e):
-                for j in range(len(self.c)):
-                        self.c[j]=(self.c[j]).multiplica(complejo(e,0))
-                return self
-        def producto(self,v2):
-                res=vectorComplejo([[0,0]]*len(self.c))
-                for j in range(len(self.c)):
-                        self.c[j]=(self.c[j]).multiplica(v2.c[j])
-                return self
-        def norma(self,v2):
-                res=0
-                for j in range(len(self.c)):
-                        res+=(self.c[j]).multiplica(v2.c[j])
-                return round(math.sqrt(res),2)
-        def distancia(self,v2):
-                res=0
-                for j in range(len(self.c)):
-                        res+=( (self.c[j]).resta(v2.c[j])).multiplica((self.c[j]).resta(v2.c[j]))
-                return round(math.sqrt(res),2)
-        
-        def __str__(self):
-                s=""
-                for j in range(len(self.c)):
-                              s+=str(self.c[j])+'\n'
-                return s 
-                
+
 class matrizCompleja:
         def __init__(self,c):
             self.c=c
@@ -71,10 +23,25 @@ class matrizCompleja:
                 for i in range(c):
                         temp[i][i]=1
                 return matrizCompleja(temp)
+        def vectorMap(self):
+                for  i in range(len(self.c[0])-1):
+                  self.c.append([complejo(0,0)]*len(self.c[0]))
+                return self
+        def trace(C):
+                suma=complejo(0,0)
+                for j in range(len(C.c[0])):
+                        suma=suma.suma(C.c[j][j])
+                return suma
+
         
         def suma(self,W):
             #suma de dos vectores de complejos
+             m=len(self.c)
+             n=len(self.c[0])
+             n2=len(W.c)
+             p=len(W.c[0])
              """res= matrizCompleja.iniciar(len(self.c),len(self.c[0]))"""
+             if(m!=n2 or n!=p): return "Las matrices no tienen el tamaño apropiado"
              res=matrizCompleja.iniciar(len(self.c),len(self.c[0]))
              for j in range(len(self.c)):
                     for k in range(len(self.c[0])):
@@ -87,30 +54,43 @@ class matrizCompleja:
                     for k in range(len(self.c[0])):
                       self.c[j][k]=(self.c[j][k]).multiplica(complejo(-1,0))
              return self
-        
+
         def multiplica(self,W):
-             res=matrizCompleja.iniciar(len(self.c),len(self.W[0]))
-             for j in range(len(self.c)):
-                    for k in range(len(self.c[0])):
-                        res.c[j][k]=(self.c[j][k]).multiplica(self.W[j][k])
+             m=len(self.c)
+             n=len(self.c[0])
+             n2=len(W.c)
+             p=len(W.c[0])
+             if(n!=n2): return "Las matrices no tienen el tamaño apropiado"
+             res=matrizCompleja.iniciar(len(self.c),len(W.c[0]))
+             for j in range(m):
+                    for k in range(p):
+                        cont=complejo(0,0)
+                        for h in range(n):
+                                cont=cont.suma( (self.c[j][h]).multiplica(W.c[h][k]) )
+                        res.c[j][k]=cont
              return res
         
         def multiplicaEscalar(self,e):
              for j in range(len(self.c)):
                     for k in range(len(self.c[0])):
-                        self.c[j][k]=(self.c[j][k]).multiplica(complejo(e,0))
-             return self
-        def transpuesta(self):
-             cont=0   
-             for j in range(len(self.c)):
-                    cont+=1
-                    for k in range(cont,len(self.c[0])):
-                        temp=self.c[j][k]
-                        self.c[j][k]=self.c[k][j]
-                        self.c[k][j]=temp
-                       
+                        self.c[j][k]=(self.c[j][k]).multiplica(complejo(e[0],e[1]))
              return self
         
+        def transpuesta(self):
+             m=len(self.c)
+             n=len(self.c[0])
+             
+             if(m!=n):
+                     self.vectorMap()
+             cont=0
+             for j in range(m):
+                     cont+=1
+                     for k in range(cont,n):
+                                temp= self.c[j][k]
+                                self.c[j][k]=self.c[k][j]
+                                self.c[k][j]=temp
+             return self
+                
         def conjugada(self):
              for j in range(len(self.c)):
                     for k in range(len(self.c[0])):
@@ -130,6 +110,10 @@ class matrizCompleja:
                      return res
              return "no es un vector!"
         
+        def productoInterno(self,W):
+                
+                return (( self.adjunta() ).multiplica(W)).trace()
+        
         def isHermitian(self):
              if( self!= self.conjugada()):
                                return "ISN´T HERMITIAN!"
@@ -139,7 +123,12 @@ class matrizCompleja:
              if( self.multiplica(self.adjunta()) != self.adjunta().multiplica(self) ):
                                return "ISN´T UNITARY!"
              return self
-        
+
+        def norma(self):
+                return round(math.sqrt(int(str(self.productoInterno(self)))),2)
+
+        def distancia(self,v2):
+                return (self.suma( v2.multiplicaEscalar([-1,0]))).norma( )
 
         
         def __str__(self):
@@ -149,4 +138,25 @@ class matrizCompleja:
                      for k in range(len(self.c[0])):
                               s+=str(self.c[j][k])+" "
                      s+=']\n'
-             return s 
+             return s
+        
+class vectorComplejo(matrizCompleja):
+        def __init__(self,c):
+            self.c=[c]
+            matrizCompleja.__init__(self,self.c)
+
+        def productoInterno(self,W):
+                print(( self.conjugada() ).multiplica(W))
+                return( self.conjugada() ).multiplica(W)
+        def transpuesta(self):
+                m=[]
+                for j in range(len(self.c)):
+                        for k in range(len(self.c[0])):
+                                m.append( self.c[j][k])
+                return m
+                
+
+           
+
+
+                
