@@ -60,6 +60,7 @@ class matrizCompleja:
              n=len(self.c[0])
              n2=len(W.c)
              p=len(W.c[0])
+             print(m,n,n2,p)
              if(n!=n2): return "Las matrices no tienen el tamaño apropiado"
              res=matrizCompleja.iniciar(len(self.c),len(W.c[0]))
              for j in range(m):
@@ -143,14 +144,20 @@ class vectorComplejo(matrizCompleja):
             matrizCompleja.__init__(self,self.c)
 
         def productoInterno(self,W):
-                print(( self.conjugada() ).multiplica(W))
-                return( self.conjugada() ).multiplica(W)
+                print(self)
+                print(W)
+                a=W
+                print(self.adjunta())
+
+                print(a)               
+                return( self.adjunta() ).multiplica(self.adjunta())
         def transpuesta(self):
-                m=iniciar(len(self.c),len(self.c[0]))
-                for j in range(len(self.c)):
-                        for k in range(len(self.c[0])):
-                                m=m.suma(self.c[j][k])
-                return m
+                m=matrizCompleja.iniciar(len(self.c[0]),len(self.c))
+                for j in range(len(self.c[0])):
+                        for k in range(len(self.c)):
+                                m.c[j][k]=self.c[k][j]
+                self.c=m.c
+                return self
                 
 
            
