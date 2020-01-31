@@ -24,10 +24,6 @@ class matrizCompleja:
                 for i in range(c):
                         temp[i][i]=1
                 return matrizCompleja(temp)
-        def vectorMap(self):
-                for  i in range(len(self.c[0])-1):
-                  self.c.append([complejo(0,0)]*len(self.c[0]))
-                return self
         def trace(C):
                 suma=complejo(0,0)
                 for j in range(len(C.c[0])):
