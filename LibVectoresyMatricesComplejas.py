@@ -11,6 +11,7 @@ class matrizCompleja:
             self.c=c
             for j in range(len(self.c)):
                     for k in range(len(self.c[0])):
+                        if(not(isinstance(self.c[j][k],complejo))):
                          self.c[j][k]=complejo(self.c[j][k][0],self.c[j][k][1])
         def iniciar(f,c):
                 m=[]
@@ -60,7 +61,6 @@ class matrizCompleja:
              n=len(self.c[0])
              n2=len(W.c)
              p=len(W.c[0])
-             print(m,n,n2,p)
              if(n!=n2): return "Las matrices no tienen el tamaño apropiado"
              res=matrizCompleja.iniciar(len(self.c),len(W.c[0]))
              for j in range(m):
@@ -78,16 +78,12 @@ class matrizCompleja:
              return self
         
         def transpuesta(self):
-             m=len(self.c)
-             n=len(self.c[0])
-             cont=0
-             for j in range(m):
-                     cont+=1
-                     for k in range(cont,n):
-                                temp= self.c[j][k]
-                                self.c[j][k]=self.c[k][j]
-                                self.c[k][j]=temp
-             return self
+                m=matrizCompleja.iniciar(len(self.c[0]),len(self.c))
+                for j in range(len(self.c[0])):
+                        for k in range(len(self.c)):
+                                m.c[j][k]=self.c[k][j]
+                self.c=m.c
+                return self
                 
         def conjugada(self):
              for j in range(len(self.c)):
@@ -109,8 +105,10 @@ class matrizCompleja:
              return "no es un vector!"
         
         def productoInterno(self,W):
-                
-                return (( self.adjunta() ).multiplica(W)).trace()
+                producto= (self.adjunta() ).multiplica(W)
+                if( len(self.c[0])==len(W.c[0])==1):
+                        return producto
+                return producto.trace()
         
         def isHermitian(self):
              if( self!= self.conjugada()):
@@ -123,7 +121,8 @@ class matrizCompleja:
              return self
 
         def norma(self):
-                return round(math.sqrt(int(str(self.productoInterno(self)))),2)
+                m= matrizCompleja(self.c)
+                return round(math.sqrt(int(str(self.productoInterno(m)))),2)
 
         def distancia(self,v2):
                 return (self.suma( v2.multiplicaEscalar([-1,0]))).norma( )
@@ -137,30 +136,5 @@ class matrizCompleja:
                               s+=str(self.c[j][k])+" "
                      s+=']\n'
              return s
-        
-class vectorComplejo(matrizCompleja):
-        def __init__(self,c):
-            self.c=[c]
-            matrizCompleja.__init__(self,self.c)
-
-        def productoInterno(self,W):
-                print(self)
-                print(W)
-                a=W
-                print(self.adjunta())
-
-                print(a)               
-                return( self.adjunta() ).multiplica(self.adjunta())
-        def transpuesta(self):
-                m=matrizCompleja.iniciar(len(self.c[0]),len(self.c))
-                for j in range(len(self.c[0])):
-                        for k in range(len(self.c)):
-                                m.c[j][k]=self.c[k][j]
-                self.c=m.c
-                return self
-                
-
-           
-
 
                 
