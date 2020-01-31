@@ -4,11 +4,12 @@ from LibreriaNumerosComplejos import *
    librería para hacer operaciones entre vectores y matrices de  complejos.
    @author (Juan Camilo Posso G.) 
    @version (1.0 or 16/01/2020)
+   gggg dlfjdsjfljjlsdjlksdlkjlkjf
 """
 
 class matrizCompleja:
         def __init__(self,c):
-            self.c=c
+            self.c=m
             for j in range(len(self.c)):
                     for k in range(len(self.c[0])):
                         if(not(isinstance(self.c[j][k],complejo))):
