@@ -31,8 +31,8 @@ class matriz:
                 m=[]
                 temp=matriz.iniciar(c,c)
                 for i in range(c):
-                        temp[i][i]=1
-                return matriz(temp)
+                        temp.c[i][i]=complejo(1,0)
+                return temp
         def trace(C):
                 suma=complejo(0,0)
                 for j in range(len(C.c[0])):

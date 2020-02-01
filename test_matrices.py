@@ -9,10 +9,11 @@ from LibVectoresyMatricesComplejas import *
 class TestMathMethods(unittest.TestCase):
     ###Operaciones en espacios vectoriales complejos.
     
-    global V,W,X,zero,c1,c2,A,B,C
+    global V,W,X,zero,c1,c2,A,B,C,In
     c1=complejo(3,3)
     c2=complejo(7,5)
     zero=matriz([ [[0,0]],[[0,0]],[[0,0]]])
+    In=matriz.unitaria(3)
 
     
     #vecctores
@@ -71,7 +72,7 @@ class TestMathMethods(unittest.TestCase):
         res2=A.conjugada().multiplicaEscalar(c1.conjugado())
         self.assertEqual( res1,res2)
 
-
+        
     def test_adjuntaEsIdempotente(self):
         res1=A.adjunta().adjunta()
         self.assertEqual( res1,A)
@@ -84,6 +85,39 @@ class TestMathMethods(unittest.TestCase):
         res2=A.adjunta().multiplicaEscalar(c1.conjugado())
         self.assertEqual( res1,res2)
         
+    def test_MatrizMultiplicacionEsAsociativa(self):
+        r1=(A.multiplica(B)).multiplica(C)
+        r2=A.multiplica(B.multiplica(C))
+        self.assertEqual(r1,r2)
+    def test_MatrizMultiplicacionTiene_In_comoUnidad(self):
+        r1=In.multiplica(A)
+        self.assertEqual(r1,A)
+    def test_MatrizMultiplicacionDistribuyeEnadicion(self):
+        res1=A.multiplica(B.suma(C))
+        res2=(A.multiplica(B)).suma(A.multiplica(C))
+        self.assertEqual(res1,res2)
+    def test_MatrizMultiplicacionDistribuyeMultiplicacionEscalar(self):
+        res1=A.multiplica(B).multiplicaEscalar(c1)
+        res2=A.multiplicaEscalar(c1).multiplica(B)
+        self.assertEqual(res1,res2)
+    def test_MatrizMultiplicacionTieneTranspuesta(self):
+        res1=A.multiplica(B).transpuesta()
+        res2=B.transpuesta().multiplica(A.transpuesta())
+        self.assertEqual(res1,res2)
+    def test_MatrizMultiplicacionTieneConjugada(self):
+        res1=A.multiplica(B).conjugada()
+        res2=A.conjugada().multiplica(B.conjugada())
+        self.assertEqual(res1,res2)
+    def test_MatrizMultiplicacionTieneAdjunta(self):
+        res1=A.multiplica(B).adjunta()
+        res2=B.adjunta().multiplica(A.adjunta())
+        self.assertEqual(res1,res2)
+        
+    ###VERIFICAR ENTRADAS
+    def test_sumaMatricesTamañosIguales(self):
+        pass
+    def test_multiplicacionMatricesTamañosIguales(self):
+        pass
 if __name__ == '__main__':
     unittest.main()
 
