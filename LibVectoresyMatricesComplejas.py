@@ -125,6 +125,21 @@ class matriz:
                 return (self.suma( v2.inversa()).norma( ))
 
         
+        def productoTensor(self,B):
+                matrix=matriz.iniciar(len(B.c)*len(self.c),len(self.c[0])*len(B.c[0]))
+                o=0;p=0
+                for m in range(len(self.c)):
+                        for n in range(len(self.c[0])):
+                                for j in range(len(B.c)):
+                                        for k in range(len(B.c[0])):
+                                                for o in range(len(matrix.c)):
+                                                        for p in range(len(matrix.c[0])+1):
+                                                         matrix.c[o][p]=self.c[m][n].multiplica(B.c[j][k])
+                                                        
+
+                return matrix
+
+        
         def __str__(self):
              s=""
              for j in range(len(self.c)):
