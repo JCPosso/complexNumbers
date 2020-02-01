@@ -7,10 +7,10 @@ from LibreriaNumerosComplejos import *
    @version (1.0 or 16/01/2020)
 """
 class TestMathMethods(unittest.TestCase):
-    global a,b,c
-    a=complejo(3,2)
-    b=complejo(5,4)
-    c=complejo(2,1)
+        global a,b,c
+        a=complejo(3,2)
+        b=complejo(5,4)
+        c=complejo(2,1)
     # Se evaluan las propiedades de la suma
     def test_suma(self):
         aa=a.suma(b)

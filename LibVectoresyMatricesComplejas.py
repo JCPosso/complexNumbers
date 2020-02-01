@@ -13,6 +13,14 @@ class matrizCompleja:
                     for k in range(len(self.c[0])):
                         if(not(isinstance(self.c[j][k],complejo))):
                          self.c[j][k]=complejo(self.c[j][k][0],self.c[j][k][1])
+
+        def __eq__(self, other):
+            """Override"""
+            for j in range(len(self.c)):
+                    for k in range(len(self.c[0])):
+                            pass
+            return False
+
         def iniciar(f,c):
                 m=[]
                 for i in range(f):
