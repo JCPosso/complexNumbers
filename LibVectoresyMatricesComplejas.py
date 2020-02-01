@@ -3,7 +3,7 @@ from LibreriaNumerosComplejos import *
 """Librería computación Cuántica: Números complejos
    librería para hacer operaciones entre vectores y matrices de  complejos.
    @author (Juan Camilo Posso G.) 
-   @version (1.0 or 16/01/2020)
+   @version (1.0 or 16/01/2020)rr
 """
 
 class matrizCompleja:
@@ -41,11 +41,7 @@ class matrizCompleja:
         
         def suma(self,W):
             #suma de dos vectores de complejos
-             m=len(self.c)
-             n=len(self.c[0])
-             n2=len(W.c)
-             p=len(W.c[0])
-             """res= matrizCompleja.iniciar(len(self.c),len(self.c[0]))"""
+             m=len(self.c);n=len(self.c[0]);n2=len(W.c);p=len(W.c[0])
              if(m!=n2 or n!=p): return "Las matrices no tienen el tamaño apropiado"
              res=matrizCompleja.iniciar(len(self.c),len(self.c[0]))
              for j in range(len(self.c)):
@@ -61,10 +57,7 @@ class matrizCompleja:
              return self
 
         def multiplica(self,W):
-             m=len(self.c)
-             n=len(self.c[0])
-             n2=len(W.c)
-             p=len(W.c[0])
+             m=len(self.c);n=len(self.c[0]);n2=len(W.c);p=len(W.c[0])
              if(n!=n2): return "Las matrices no tienen el tamaño apropiado"
              res=matrizCompleja.iniciar(len(self.c),len(W.c[0]))
              for j in range(m):
@@ -129,7 +122,7 @@ class matrizCompleja:
                 return round(math.sqrt(int(str(self.productoInterno(m)))),2)
 
         def distancia(self,v2):
-                return (self.suma( v2.multiplicaEscalar([-1,0]))).norma( )
+                return (self.suma( v2.inversa()).norma( ))
 
         
         def __str__(self):
