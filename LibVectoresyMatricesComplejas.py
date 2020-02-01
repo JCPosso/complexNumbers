@@ -6,7 +6,7 @@ from LibreriaNumerosComplejos import *
    @version (1.0 or 16/01/2020)rr
 """
 
-class matrizCompleja:
+class matriz:
         def __init__(self,c):
             self.c=c
             for j in range(len(self.c)):
@@ -18,20 +18,21 @@ class matrizCompleja:
             """Override"""
             for j in range(len(self.c)):
                     for k in range(len(self.c[0])):
-                            pass
+                            if isinstance(other.c[j][k], complejo):
+                                    return( self.c[j][k].real == other.c[j][k].real and self.c[j][k].img == other.c[j][k].img)
             return False
 
         def iniciar(f,c):
                 m=[]
                 for i in range(f):
                         m.append([ [0,0] ]*c)
-                return matrizCompleja(m)
+                return matriz(m)
         def unitaria(c):
                 m=[]
-                temp=matrizCompleja.iniciar(c,c)
+                temp=matriz.iniciar(c,c)
                 for i in range(c):
                         temp[i][i]=1
-                return matrizCompleja(temp)
+                return matriz(temp)
         def trace(C):
                 suma=complejo(0,0)
                 for j in range(len(C.c[0])):
@@ -40,17 +41,15 @@ class matrizCompleja:
 
         
         def suma(self,W):
-            #suma de dos vectores de complejos
              m=len(self.c);n=len(self.c[0]);n2=len(W.c);p=len(W.c[0])
              if(m!=n2 or n!=p): return "Las matrices no tienen el tamaño apropiado"
-             res=matrizCompleja.iniciar(len(self.c),len(self.c[0]))
+             res=matriz.iniciar(len(self.c),len(self.c[0]))
              for j in range(len(self.c)):
                     for k in range(len(self.c[0])):
                             res.c[j][k]=(self.c[j][k]).suma(W.c[j][k])
              return res
         
         def inversa(self):
-            #suma de dos vectores de complejos
              for j in range(len(self.c)):
                     for k in range(len(self.c[0])):
                       self.c[j][k]=(self.c[j][k]).multiplica(complejo(-1,0))
@@ -59,7 +58,7 @@ class matrizCompleja:
         def multiplica(self,W):
              m=len(self.c);n=len(self.c[0]);n2=len(W.c);p=len(W.c[0])
              if(n!=n2): return "Las matrices no tienen el tamaño apropiado"
-             res=matrizCompleja.iniciar(len(self.c),len(W.c[0]))
+             res=matriz.iniciar(len(self.c),len(W.c[0]))
              for j in range(m):
                     for k in range(p):
                         cont=complejo(0,0)
@@ -69,13 +68,14 @@ class matrizCompleja:
              return res
         
         def multiplicaEscalar(self,e):
+             res=matriz.iniciar(len(self.c),len(self.c[0]))
              for j in range(len(self.c)):
                     for k in range(len(self.c[0])):
-                        self.c[j][k]=(self.c[j][k]).multiplica(complejo(e[0],e[1]))
-             return self
+                        res.c[j][k]=(self.c[j][k]).multiplica(e)
+             return res
         
         def transpuesta(self):
-                m=matrizCompleja.iniciar(len(self.c[0]),len(self.c))
+                m=matriz.iniciar(len(self.c[0]),len(self.c))
                 for j in range(len(self.c[0])):
                         for k in range(len(self.c)):
                                 m.c[j][k]=self.c[k][j]
@@ -92,12 +92,12 @@ class matrizCompleja:
              self=(self.transpuesta()).conjugada()
              return self
         
-        def alcanceSobre(self,vComplejo):
-             if(isinstance(vComplejo ,vectorComplejo) ): 
-                     res=vectorComplejo([[0,0]]*len(vComplejo))
+        def alcanceSobre(self,vector):
+             if(len(vector[0])==1 ): 
+                     res=vectorComplejo([[0,0]]*len(vector))
                      for j in range(len(self.c)):
                             for k in range(len(self.c[0])):
-                                  res.c[k] =res.c[k].suma( self.c[j][k].multiplica(vcomplejo[k]) )
+                                  res.c[k] =res.c[k].suma( self.c[j][k].multiplica(vector[k]) )
                      return res
              return "no es un vector!"
         
@@ -118,7 +118,7 @@ class matrizCompleja:
              return self
 
         def norma(self):
-                m= matrizCompleja(self.c)
+                m= matriz(self.c)
                 return round(math.sqrt(int(str(self.productoInterno(m)))),2)
 
         def distancia(self,v2):
@@ -133,5 +133,3 @@ class matrizCompleja:
                               s+=str(self.c[j][k])+" "
                      s+=']\n'
              return s
-
-                
