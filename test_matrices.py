@@ -113,11 +113,71 @@ class TestMathMethods(unittest.TestCase):
         res2=B.adjunta().multiplica(A.adjunta())
         self.assertEqual(res1,res2)
         
+    def test01_productoInterno(self):
+        Z=matriz([ [[4,2],[7,2],[5,6]],[[7,9],[1,9],[8,0]],[[2,1],[1,5],[5,2]] ])
+        W=matriz([ [[0,2],[1,0],[2,6]],[[9,9],[1,9],[7,7]],[[7,8],[4,5],[0,2]] ])
+        self.assertEqual('394+66i',str(Z.productoInterno(W)))
+    def test02_productoInterno(self):
+        Z=matriz([ [[5,2],[3,1],[6,6]],[[6,9],[1,9],[4,0]],[[7,1],[4,5],[3,2]] ])
+        W=matriz([ [[1,2],[3,2],[1,6]],[[4,9],[7,9],[0,0]],[[7,1],[8,5],[3,2]] ])
+        self.assertEqual('375-15i',str(Z.productoInterno(W)))
+    def test03_productoInterno(self):
+        Z=matriz([ [[0,0],[0,0],[0,0]],[[0,0],[0,0],[0,0]],[[0,0],[0,0],[0,0]] ])
+        W=matriz([ [[0,0],[0,0],[0,0]],[[0,0],[0,0],[0,0]],[[0,0],[0,0],[0,0]] ])
+        self.assertEqual('0',str(Z.productoInterno(W)))
+    
+    def test01_norma(self):
+        Z=matriz([ [[4,2]],[[9,9]],[[0,2]] ])
+        self.assertEqual('13.64',str(Z.norma()))
+    def test02_norma(self):
+        Z=matriz([ [[4,2],[5,8],[1,2]],[[9,7],[1,7],[3,1]],[[4,1],[5,0],[9,2]] ])
+        self.assertEqual('20.76',str(Z.norma()))
+    def test03_norma(self):
+        Z=matriz([ [[1,2],[3,2],[6,6]],[[9,9],[1,9],[0,0]],[[7,1],[4,5],[3,2]] ])
+        self.assertEqual('20.93',str(Z.norma()))
+    
+    def test01_distancia(self):
+        Z=matriz([ [[9,2],[6,2],[6,6]],[[6,6],[1,9],[6,0]],[[7,1],[6,5],[3,6]] ])
+        W=matriz([ [[1,2],[3,2],[6,6]],[[9,9],[1,9],[0,0]],[[7,1],[4,5],[3,2]] ])
+        self.assertEqual('12.12',str(Z.distancia(W)))
+    def test02_distancia(self):
+        V=matriz([ [[1,0]],[[1,9]],[[9,0]] ])
+        W=matriz([ [[5,7]],[[8,6]],[[1,5]] ])
+        self.assertEqual('14.56',str(V.distancia(W)))
+    def test03_distancia(self):
+        Z=matriz([ [[1,2],[3,2],[6,6]],[[9,9],[1,9],[0,0]],[[7,1],[4,5],[3,2]] ])
+        W=matriz([ [[1,2],[3,2],[6,6]],[[9,9],[1,9],[0,0]],[[7,1],[4,5],[3,2]] ])
+        self.assertEqual('0.0',str(Z.distancia(W)))
+
+    def test01_hermitian(self):
+        Z=matriz([ [[1,0],[0,1]],[[0,-1],[1,0]] ])
+        self.assertTrue(Z.isHermitian())
+    def test02_hermitian(self):
+        Z=matriz([ [[2,0],[1,1]],[[1,-1],[3,0]] ])
+        self.assertTrue(Z.isHermitian())
+    def test03_hermitian(self):
+        Z=matriz([ [[1,0],[4,8]],[[5,2],[4,0]] ])
+        self.assertFalse(Z.isHermitian())
+
+    def test01_unitaria(self):
+        Z=matriz([ [[1,0],[1,1]],[[1,-1],[2,0]] ])
+        self.assertTrue(Z.isUnitary())
+    def test02_unitaria(self):
+        Z=matriz([ [[1,2],[3,2],[6,6]],[[9,9],[1,9],[0,0]],[[7,1],[4,5],[3,2]] ])
+        self.assertFalse(Z.isUnitary())
+    def test03_unitaria(self):
+        Z=matriz([ [[1,2],[3,2],[3,2]],[[3,2],[7,1],[3,2]] ])
+        self.assertFalse(Z.isUnitary())
+        
     ###VERIFICAR ENTRADAS
     def test_sumaMatricesTamañosIguales(self):
-        pass
-    def test_multiplicacionMatricesTamañosIguales(self):
-        pass
+        v1= matriz([ [[1,2]],[[3,5]],[[6,8]] ])
+        v2= matriz([ [[3,5]],[[6,8]] ])
+        self.assertTrue('Las matrices no tienen el tamaño apropiado',v1.suma(v2))
+    def test_multiplicacionMatricesTamaños(self):
+        a1= matriz([ [[1,2],[3,5],[3,5]],[[6,8],[3,5],[4,5]],[[7,5],[6,8],[8,5]] ])
+        a2= matriz([ [[1,2],[3,5],[3,5]],[[6,8],[3,5],[4,5]] ])
+        self.assertTrue('Las matrices no tienen el tamaño apropiado',a1.multiplica(a2))
 if __name__ == '__main__':
     unittest.main()
 

@@ -16,11 +16,12 @@ class matriz:
 
         def __eq__(self, other):
             """Override"""
-            for j in range(len(self.c)):
+            if(len(self.c[0])==len(other.c[0])and len(self.c)==len(other.c)):
+             for j in range(len(self.c)):
                     for k in range(len(self.c[0])):
                             if isinstance(other.c[j][k], complejo):
-                                    return( self.c[j][k].real == other.c[j][k].real and self.c[j][k].img == other.c[j][k].img)
-            return False
+                                    if(self.c[j][k].real != other.c[j][k].real or self.c[j][k].img != other.c[j][k].img):return False
+            return True
 
         def iniciar(f,c):
                 m=[]
@@ -38,11 +39,16 @@ class matriz:
                 for j in range(len(C.c[0])):
                         suma=suma.suma(C.c[j][j])
                 return suma
-
+        def instanciar(self):
+             v2=matriz.iniciar(len(self.c),len(self.c[0]))
+             for j in range(len(self.c)):
+                    for k in range(len(self.c[0])):
+                            v2.c[j][k]=self.c[j][k]
+             return v2
         
         def suma(self,W):
              m=len(self.c);n=len(self.c[0]);n2=len(W.c);p=len(W.c[0])
-             if(m!=n2 or n!=p): return "Las matrices no tienen el tamaño apropiado"
+             if(m!=n2 or n!=p):return( "Las matrices no tienen el tamaño apropiado") 
              res=matriz.iniciar(len(self.c),len(self.c[0]))
              for j in range(len(self.c)):
                     for k in range(len(self.c[0])):
@@ -68,10 +74,11 @@ class matriz:
              return res
         
         def multiplicaEscalar(self,e):
+             if(isinstance(self,complejo)):temp=e;e=self;self=temp
              res=matriz.iniciar(len(self.c),len(self.c[0]))
              for j in range(len(self.c)):
                     for k in range(len(self.c[0])):
-                        res.c[j][k]=(self.c[j][k]).multiplica(e)
+                            res.c[j][k]=(self.c[j][k]).multiplica(e)
              return res
         
         def transpuesta(self):
@@ -106,16 +113,19 @@ class matriz:
                 if( len(self.c[0])==len(W.c[0])==1):
                         return producto
                 return producto.trace()
-        
+
         def isHermitian(self):
-             if( self!= self.conjugada()):
-                               return "ISN´T HERMITIAN!"
-             return self
+                n=matriz.instanciar(self)
+                if( self==n.adjunta()):
+                               return True
+                return False
         
         def isUnitary(self):
-             if( self.multiplica(self.adjunta()) != self.adjunta().multiplica(self) ):
-                               return "ISN´T UNITARY!"
-             return self
+             n=matriz.instanciar(self)
+             if(len(self.c[0])==len(self.c)):
+                     if( self.multiplica(n.adjunta())==(self.adjunta().multiplica(n) )):
+                             return True
+             return False
 
         def norma(self):
                 m= matriz(self.c)
@@ -132,11 +142,11 @@ class matriz:
                         for n in range(len(self.c[0])):
                                 for j in range(len(B.c)):
                                         for k in range(len(B.c[0])):
-                                                for o in range(len(matrix.c)):
-                                                        for p in range(len(matrix.c[0])+1):
-                                                         matrix.c[o][p]=self.c[m][n].multiplica(B.c[j][k])
-                                                        
-
+                                                if(o<len(matrix.c)):
+                                                        if(p>=len(matrix.c[0])):
+                                                                p=0;o+=1
+                                                        matrix.c[o][p]=self.c[m][n].multiplica(B.c[j][k])
+                                                        p+=1
                 return matrix
 
         
