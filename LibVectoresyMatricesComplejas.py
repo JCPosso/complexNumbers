@@ -106,7 +106,7 @@ class matriz:
                             for k in range(len(self.c[0])):
                                   res.c[k] =res.c[k].suma( self.c[j][k].multiplica(vector[k]) )
                      return res
-             return "no es un vector!"
+             return "no ingresó un vector, intente nuevamente!"
         
         def productoInterno(self,W):
                 producto= (self.adjunta() ).multiplica(W)
