@@ -1,27 +1,65 @@
-# complexNumbers
-Librería computación Cuántica: Números complejos
+# ComplexNumbers
+## Librería computación Cuántica: Números complejos
 
-complexNumbers es una libreria de numeros complejos la cual realiza distintas operaciones artimeticas y algebraicas ,unarias y binarias entre numeros complejos entre las cuales estan :
+ComplexNumbers es una libreria de numeros complejos la cual realiza distintas operaciones artimeticas y algebraicas ;tanto unarias y binarias, entre numeros complejos tales como :
 
-1.suma
+-->suma 
 
-2.resta
+-->resta
 
-3.multiplicacion
+-->multiplicacion
 
-4.division
+-->division
 
-5.modulo de un numero complejo
+-->modulo de un numero complejo
 
-6.Conjugado de un numero complejo
+-->Conjugado de un numero complejo
 
-7.cartesianas a polar
+-->cartesianas a polar
 
-8.fase de un numero complejo
+-->fase de un numero complejo
 
+De la misma forma , permite realizar operaciones entre matrices y vectores  en espacios complejos vectoriales como en espacios complejos reales  usando numeros reales y complejos entre las cuales se encuentran:
 
+-->Adición de vectores complejos. 
 
-Esta libreria se compone de la clase complejo y usa metodos de sobre escritura __eql__ y ,por otro lado, el metodo __str__ para hacer la impresion de los numeros en la forma "a+bi" 
+-->Inverso (aditivo) de un vector complejo.
 
+-->Multiplicación de un escalar por un vector complejo.
 
-Por otro lado, tambien se encuentran pruebas de unidad en donde se evaluan las propiedades de las operaciones entre los numeros complejos de forma unaria y binaria 
+-->Adición de matrices complejas.
+
+-->Inversa (aditiva) de una matriz compleja.
+
+-->Multiplicación de un escalar por una matriz compleja.
+
+-->Transpuesta de una matriz/vector
+
+-->Conjugada de una matriz/vector
+
+-->Adjunta de una matriz/vector
+
+-->Función para calcular la "acción" de una matriz sobre un vector.
+
+-->Norma de una matriz
+
+-->Distancia entre dos matrices
+
+-->Producto tensor de dos matrices/vectores
+
+_Y por ultimo , permite revisar si :_
+
+-->una matriz es unitaria
+
+-->una matriz es Hermitiana
+
+### Documentación: 
+La entrada de los datos se debe hacer de forma cartesiana para los numeros reales y complejos Y de forma matricial para los vectores y matrices.
+
+Esta libreria se compone de las clases complejo y matriz.Usa metodos _override_ como:  __eql__ , y el metodo __str__ para hacer la impresion de los numeros en la forma "a+bi"
+
+### Pruebas
+Se agregan pruebas de unidad que  evaluan las propiedades de las operaciones entre los numeros complejos de forma unaria y binaria  y tambien las propiedades algebraicas entre matrices y vectores. 
+
+### Autor(es):
+ Juan Camilo Posso G.
