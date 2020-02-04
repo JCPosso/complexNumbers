@@ -165,10 +165,22 @@ class TestMathMethods(unittest.TestCase):
     def test02_unitaria(self):
         Z=matriz([ [[1,2],[3,2],[6,6]],[[9,9],[1,9],[0,0]],[[7,1],[4,5],[3,2]] ])
         self.assertFalse(Z.isUnitary())
-    def test03_unitaria(self):
+    def test03_unitariaDebeSerCuadrada(self):
         Z=matriz([ [[1,2],[3,2],[3,2]],[[3,2],[7,1],[3,2]] ])
         self.assertFalse(Z.isUnitary())
         
+    def test01_productoTensor(self):
+        k=matriz([ [[2,0]],[[3,0]] ])
+        c=matriz([ [[4,0]],[[6,0]],[[3,0]] ])
+        self.assertEqual(str(k.productoTensor(c)),'[ 8 ]\n[ 12 ]\n[ 6 ]\n[ 12 ]\n[ 18 ]\n[ 9 ]\n')
+
+    def test02_productoTensor(self):
+        k=matriz([ [[1,0]],[[0,0]] ])
+        b=matriz([ [[8,0]],[[0,0]],[[0,0]] ])
+        c=matriz([ [[0,0]],[[6,0]] ])
+        d=matriz([ [[0,0]],[[0,0]],[[3,0]] ])
+        self.assertEqual(str((k.productoTensor(b)).suma(c.productoTensor(d))),'[ 8 ]\n[ 0 ]\n[ 0 ]\n[ 0 ]\n[ 0 ]\n[ 18 ]\n')
+    
     ###VERIFICAR ENTRADAS
     def test_sumaMatricesTamañosIguales(self):
         v1= matriz([ [[1,2]],[[3,5]],[[6,8]] ])
