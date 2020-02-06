@@ -8,21 +8,19 @@ from LibreriaNumerosComplejos import *
 
 class matriz:
         def __init__(self,c):
-            self.c=c
-            for j in range(len(self.c)):
-                    for k in range(len(self.c[0])):
-                        if(not(isinstance(self.c[j][k],complejo))):
-                         self.c[j][k]=complejo(self.c[j][k][0],self.c[j][k][1])
-
+                self.c=c
+                for j in range(len(self.c)):
+                        for k in range(len(self.c[0])):
+                                if(not(isinstance(self.c[j][k],complejo))):
+                                        self.c[j][k]=complejo(self.c[j][k][0],self.c[j][k][1])
         def __eq__(self, other):
-            """Override"""
-            if(len(self.c[0])==len(other.c[0])and len(self.c)==len(other.c)):
-             for j in range(len(self.c)):
-                    for k in range(len(self.c[0])):
-                            if isinstance(other.c[j][k], complejo):
-                                    if(self.c[j][k].real != other.c[j][k].real or self.c[j][k].img != other.c[j][k].img):return False
-            return True
-
+                """Override"""
+                if(len(self.c[0])==len(other.c[0])and len(self.c)==len(other.c)):
+                        for j in range(len(self.c)):
+                                for k in range(len(self.c[0])):
+                                        if isinstance(other.c[j][k], complejo):
+                                                if(self.c[j][k].real != other.c[j][k].real or self.c[j][k].img != other.c[j][k].img):return False
+                                                return True
         def iniciar(f,c):
                 m=[]
                 for i in range(f):
@@ -42,17 +40,17 @@ class matriz:
         def instanciar(self):
              v2=matriz.iniciar(len(self.c),len(self.c[0]))
              for j in range(len(self.c)):
-                    for k in range(len(self.c[0])):
-                            v2.c[j][k]=self.c[j][k]
+                     for k in range(len(self.c[0])):
+                             v2.c[j][k]=self.c[j][k]
              return v2
         
         def suma(self,W):
              m=len(self.c);n=len(self.c[0]);n2=len(W.c);p=len(W.c[0])
-             if(m!=n2 or n!=p):return( "Las matrices no tienen el tamaño apropiado") 
+             if(m!=n2 or n!=p):return( "Las matrices no tienen el tamaño apropiado")
              res=matriz.iniciar(len(self.c),len(self.c[0]))
              for j in range(len(self.c)):
-                    for k in range(len(self.c[0])):
-                            res.c[j][k]=(self.c[j][k]).suma(W.c[j][k])
+                     for k in range(len(self.c[0])):
+                             res.c[j][k]=(self.c[j][k]).suma(W.c[j][k])
              return res
         
         def inversa(self):
@@ -117,7 +115,7 @@ class matriz:
         def isHermitian(self):
                 n=matriz.instanciar(self)
                 if( self==n.adjunta()):
-                               return True
+                        return True
                 return False
         
         def isUnitary(self):
@@ -151,10 +149,10 @@ class matriz:
 
         
         def __str__(self):
-             s=""
-             for j in range(len(self.c)):
-                     s+="[ "
-                     for k in range(len(self.c[0])):
-                              s+=str(self.c[j][k])+" "
-                     s+=']\n'
-             return s
+                s=""
+                for j in range(len(self.c)):
+                        s+="[ "
+                        for k in range(len(self.c[0])):
+                                s+=str(self.c[j][k])+" "
+                        s+=']\n'
+                return s
