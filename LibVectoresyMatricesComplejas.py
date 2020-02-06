@@ -114,8 +114,10 @@ class matriz:
 
         def isHermitian(self):
                 n=matriz.instanciar(self)
-                if( self==n.adjunta()):
-                        return True
+                for j in range(len(self.c)):
+                            for k in range(len(self.c[0])):
+                                    if( self[j][k]!=n.c[k][j].conjugado()):
+                                            return False
                 return False
         
         def isUnitary(self):
@@ -134,17 +136,14 @@ class matriz:
 
         
         def productoTensor(self,B):
-                matrix=matriz.iniciar(len(B.c)*len(self.c),len(self.c[0])*len(B.c[0]))
+                m=len(B.c)*len(self.c)
+                n=len(self.c[0])*len(B.c[0])
+                matrix=matriz.iniciar(m,n)
                 o=0;p=0
-                for m in range(len(self.c)):
-                        for n in range(len(self.c[0])):
-                                for j in range(len(B.c)):
-                                        for k in range(len(B.c[0])):
-                                                if(o<len(matrix.c)):
-                                                        if(p>=len(matrix.c[0])):
-                                                                p=0;o+=1
-                                                        matrix.c[o][p]=self.c[m][n].multiplica(B.c[j][k])
-                                                        p+=1
+                for j in range(len(matrix.c)):
+                        for k in range(len(matrix.c[0])):
+                                print(m,n, j//n,k//m,j%n,k%m)
+                                matrix.c[j][k]=self.c[j//n][k//m].multiplica(B.c[j%n][k%m])
                 return matrix
 
         
@@ -156,3 +155,18 @@ class matriz:
                                 s+=str(self.c[j][k])+" "
                         s+=']\n'
                 return s
+if __name__ == '__main__':
+        m= matriz( [ [[1,0],[1,0]],[[1,0],[-1,0]] ])
+        c1=complejo(1/math.sqrt(2),0)
+        v0=matriz([ [[1,0]],[[0,0]] ] )
+        v1=matriz([ [[1,0]],[[0,0]] ])
+        x=matriz([ [[0,0],[1,0]],[[1,0],[0,0]] ])
+        h=m.multiplicaEscalar(c1)
+        print(h)
+        v00=v0.productoTensor(v1)
+        print(v00)
+        m1=x.productoTensor(h)
+        m2=h.productoTensor(h)
+        print(m1)
+        print(m2)
+        print((m2).multiplica(m1).multiplica(v00))
