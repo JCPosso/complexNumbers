@@ -8,14 +8,11 @@ from LibVectoresyMatricesComplejas import *
 """
 class TestMathMethods(unittest.TestCase):
     ###Operaciones en espacios vectoriales complejos.
-    
     global V,W,X,zero,c1,c2,A,B,C,In
     c1=complejo(3,3)
     c2=complejo(7,5)
     zero=matriz([ [[0,0]],[[0,0]],[[0,0]]])
     In=matriz.unitaria(3)
-
-    
     #vecctores
     V=matriz([ [[3,2]],[[1,9]],[[3,2]] ])
     W=matriz([ [[5,2]],[[4,1]],[[1,2]] ])
@@ -24,7 +21,6 @@ class TestMathMethods(unittest.TestCase):
     A=matriz([ [[1,2],[3,2],[6,6]],[[9,9],[1,9],[0,0]],[[7,1],[4,5],[3,2]] ])
     B=matriz([ [[5,2],[7,6],[6,0]],[[3,1],[1,9],[0,5]],[[4,4],[6,8],[3,9]] ])
     C=matriz([ [[6,2],[3,9],[8,1]],[[2,9],[8,9],[3,1]],[[7,2],[9,5],[1,2]] ])
-
     def test_sumaEsConmutativa(self):
         r1=V.suma(W)
         r2=W.suma(V)
@@ -51,15 +47,13 @@ class TestMathMethods(unittest.TestCase):
         res1=V.multiplicaEscalar(c1.suma(c2))
         res2=(V.multiplicaEscalar(c1)).suma(V.multiplicaEscalar(c2))
         self.assertEqual(res1,res2)
-
-##Operaciones en espacios matriciales complejas
+    ##Operaciones en espacios matriciales complejas
     def test_transpuestaEsIdempotente(self):
         self.assertEqual( (A.transpuesta()).transpuesta(),A)
     def test_transpuestaRespectoAdicion(self):
         self.assertEqual( (A.suma(B)).transpuesta(),(A.transpuesta()).suma(B.transpuesta()))        
     def test_transpuestaRespectoMultiplicacionEscalar(self):
         self.assertEqual( (A.multiplicaEscalar(c1)).transpuesta(),A.transpuesta().multiplicaEscalar(c1))
-
     def test_conjugadoEsIdempotente(self):
         res1=A.conjugada().conjugada()
         self.assertEqual( res1,A)
@@ -158,7 +152,7 @@ class TestMathMethods(unittest.TestCase):
     def test03_hermitian(self):
         Z=matriz([ [[1,0],[4,8]],[[5,2],[4,0]] ])
         self.assertFalse(Z.isHermitian())
-
+    
     def test01_unitaria(self):
         Z=matriz([ [[1,0],[1,1]],[[1,-1],[2,0]] ])
         self.assertTrue(Z.isUnitary())
@@ -168,7 +162,7 @@ class TestMathMethods(unittest.TestCase):
     def test03_unitariaDebeSerCuadrada(self):
         Z=matriz([ [[1,2],[3,2],[3,2]],[[3,2],[7,1],[3,2]] ])
         self.assertFalse(Z.isUnitary())
-        
+    
     def test01_productoTensor(self):
         k=matriz([ [[2,0]],[[3,0]] ])
         c=matriz([ [[4,0]],[[6,0]],[[3,0]] ])
