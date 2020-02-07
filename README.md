@@ -39,6 +39,17 @@ Para comprobar que Git se instaló correctamente solo vamos a Windows -> y escri
 siga instrucciones en https://git-scm.com/book/en/v2/Getting-Started-Installing-Git para ejecutar un entorno de desarrollo en git
 ## Running the tests
 Ejecute las prueblas test_numerosComplejos y test_vectoresyMatrices desde la IDLE .
+### End to end tests
+Se realizaron pruebas para verificar , cómo se comportan las funciones para el tratamiento de los numeros complejos y si cumplen con las reglas basicas de aritmetica , asi como reglas algebraicas para la operacion adecuada de complejos , vectores y matrices .
+```
+Ejemplo de prueba para producto Tensor para verificar si se puede obtener un producto Tensor entrelazado:
+  def test02_productoTensor(self):
+        k=matriz([ [[1,0]],[[0,0]] ])
+        b=matriz([ [[8,0]],[[0,0]],[[0,0]] ])
+        c=matriz([ [[0,0]],[[6,0]] ])
+        d=matriz([ [[0,0]],[[0,0]],[[3,0]] ])
+        self.assertEqual(str((k.productoTensor(b)).suma(c.productoTensor(d))),'[ 8 ]\n[ 0 ]\n[ 0 ]\n[ 0 ]\n[ 0 ]\n[ 18 ]\n')
+```
 
 ## Versioning
 
