@@ -2,10 +2,10 @@
 
 ComplexNumbers es una libreria para el manejo de numeros complejos ,matrices complejas Útil para la realizacion de  simulaciones de circuitos cuánticos.
 
-## Getting Started
+## Comenzando 🚀
 * Clone éste repositorio en su máquina local usando [ComplexNumbers](https://github.com/JCPosso/complexNumbers.git)- Repositorio
 
-### Prerequisites
+### Pre-requisitos 📋
 
 Python 3
 
@@ -35,11 +35,11 @@ En la siguiente pantalla nos muestra algunas configuraciones que podemos cambiar
 5.-Comprobando la instalación         
 Para comprobar que Git se instaló correctamente solo vamos a Windows -> y escribimos Git, veremos que aparecerán los programas básicos para comenzar a trabajar con Git.
 ```
-### Installing
+### Instalación 🔧
 siga instrucciones en https://git-scm.com/book/en/v2/Getting-Started-Installing-Git para ejecutar un entorno de desarrollo en git
-## Running the tests
+## Ejecutando las pruebas ⚙️
 Ejecute las prueblas test_numerosComplejos y test_vectoresyMatrices desde la IDLE .
-### End to end tests
+### Pruebas end-to-end 🔩
 Se realizaron pruebas para verificar , cómo se comportan las funciones para el tratamiento de los numeros complejos y si cumplen con las reglas basicas de aritmetica , asi como reglas algebraicas para la operacion adecuada de complejos , vectores y matrices .
 ```
 Ejemplo de prueba para producto Tensor para verificar si se puede obtener un producto Tensor entrelazado:
@@ -51,14 +51,20 @@ Ejemplo de prueba para producto Tensor para verificar si se puede obtener un pro
         self.assertEqual(str((k.productoTensor(b)).suma(c.productoTensor(d))),'[ 8 ]\n[ 0 ]\n[ 0 ]\n[ 0 ]\n[ 0 ]\n[ 18 ]\n')
 ```
 
-## Versioning
-
+## Versionado 📌
+Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones disponibles, mira los [tags en este repositorio](https://github.com/JCPosso/complex Numers/tags).
 Versiones actuales de la libreria :
 * (https://github.com/JCPosso/complexNumbers/releases/tag/v1.0-Beta). 
 
-## Authors
+## Autores ✒️
 
 * **Juan Camilo PossoG.** - *Initial work* - [JCPosso](https://github.com/JCPosso)
+
+* Personas que han contribuido al proyecto : [contribuyentes](https://github.com/JCPosso/complexNumbers/contributors)
+
+## Licencia 📄
+
+Este proyecto está bajo [LICENSE.txt](https://github.com/JCPosso/complexNumbers/blob/master/LICENCE.txt).
 
 ## Referencias
 Inspirando en:
