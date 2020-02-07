@@ -32,7 +32,8 @@ Y por otro lado encontramos la libreria matrices.py la cual nos permite realizar
 
 ## Comenzando 🚀
 * Clone éste repositorio en su máquina local usando [ComplexNumbers](https://github.com/JCPosso/complexNumbers.git)- Repositorio
-*Para hacer un buen uso de las funciones , cabe recordar que la entrada debe ser tipo matricial y para la creacion de numeros complejos en forma de tuplas  en donde se especifica la parte real e imaginaria como por ejemplo:
+
+* Para hacer un buen uso de las funciones , cabe recordar que la entrada debe ser tipo matricial y para la creacion de numeros complejos en forma de tuplas  en donde se especifica la parte real e imaginaria como por ejemplo:
 ```
 a= complejo(5,4)
 b= complejo(5,0)
@@ -48,8 +49,9 @@ A=matriz([ [[1,2],[3,2],[6,6]],[[9,9],[1,9],[0,0]],[[7,1],[4,5],[3,2]] ])
 ```
 
 ### Pre-requisitos 📋
-Sistemas operatrivos: mac , linux o windows.
-Editor de archivos .py
+* Sistemas operatrivos: mac , linux o windows.
+
+* Editor de archivos .py
 
 Python 3
 
@@ -85,10 +87,11 @@ Para comprobar que Git se instaló correctamente solo vamos a Windows -> y escri
 * Importe la libreria al archivo .py del proyecto
 * Utilizce las funciones de libreria .
 
-*siga instrucciones en https://git-scm.com/book/en/v2/Getting-Started-Installing-Git para ejecutar un entorno de desarrollo en git
+* *siga instrucciones en https://git-scm.com/book/en/v2/Getting-Started-Installing-Git para ejecutar un entorno de desarrollo en git
 
 ## Ejecutando las pruebas ⚙️
-Para ejecutar los test debe descargar el archivo 'test_matrices.py' y 'test_numerosComplejos' en los cuales se encuentran las diferentes pruebas realizadas y los datos que deberia arrojar para distintos resultados.
+Para ejecutar los test debe descargar el archivo 'test_matrices.py' y 'test_numerosComplejos.py' en los cuales se encuentran las diferentes pruebas realizadas y los datos que deberia arrojar para distintos resultados.
+
 Ejecute las prueblas test_numerosComplejos y test_matrices desde su editor .py .
 
 ### Pruebas end-to-end 🔩
@@ -103,8 +106,9 @@ Ejemplo de prueba para producto Tensor para verificar si se puede obtener un pro
         self.assertEqual(str((k.productoTensor(b)).suma(c.productoTensor(d))),'[ 8 ]\n[ 0 ]\n[ 0 ]\n[ 0 ]\n[ 0 ]\n[ 18 ]\n')
 ```
 Estan pruebas tienen casos sacados del libro  , las distintas propiedades especificadas en éste y casos arbitrarios para corroborar su funcionamiento.
+
 ## Versionado 📌
-Se usó [SemVer](http://semver.org/) para el versionado. Para todas las versiones disponibles, mira los [tags en este repositorio(https://github.com/JCPosso/complex Numers/tags).
+Se usó [SemVer](http://semver.org/) para el versionado. Para todas las versiones disponibles, mira los [Tags del repositorio](https://github.com/JCPosso/complexNumbers/tags).
 
 Versiones actuales de la libreria :
 * (https://github.com/JCPosso/complexNumbers/releases/tag/v1.0-Beta). 
@@ -121,4 +125,5 @@ Este proyecto está bajo licencia [LICENSE.txt](https://github.com/JCPosso/compl
 
 ## Referencias
 Inspirando en:
+
 *Michael A. Nielsen, Isaac L. Chuang. Quantum Computation and Quantum Information (10th Anniversary edition). Cambridge University Press. 2016
