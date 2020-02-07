@@ -116,9 +116,10 @@ class matriz:
                 n=matriz.instanciar(self)
                 for j in range(len(self.c)):
                             for k in range(len(self.c[0])):
-                                    if( self[j][k]!=n.c[k][j].conjugado()):
+                                    if( self.c[j][k]!=n.c[k][j].conjugado()):
                                             return False
-                return False
+                                    #n.c[k][j].conjugado()
+                return True
         
         def isUnitary(self):
              n=matriz.instanciar(self)
@@ -136,14 +137,13 @@ class matriz:
 
         
         def productoTensor(self,B):
-                m=len(B.c)*len(self.c)
-                n=len(self.c[0])*len(B.c[0])
-                matrix=matriz.iniciar(m,n)
+                f=len(B.c)*len(self.c)
+                c=len(self.c[0])*len(B.c[0])
+                matrix=matriz.iniciar(f,c)
                 o=0;p=0
                 for j in range(len(matrix.c)):
                         for k in range(len(matrix.c[0])):
-                                print(m,n, j//n,k//m,j%n,k%m)
-                                matrix.c[j][k]=self.c[j//n][k//m].multiplica(B.c[j%n][k%m])
+                                matrix.c[j][k]=self.c[j//len(B.c)][k//len(B.c[0])].multiplica(B.c[j%len(B.c)][k%len(B.c[0])])
                 return matrix
 
         
@@ -156,17 +156,22 @@ class matriz:
                         s+=']\n'
                 return s
 if __name__ == '__main__':
+
+        x=matriz([ [[0,0],[1,0]],[[1,0],[0,0]] ])
+        
         m= matriz( [ [[1,0],[1,0]],[[1,0],[-1,0]] ])
         c1=complejo(1/math.sqrt(2),0)
-        v0=matriz([ [[1,0]],[[0,0]] ] )
-        v1=matriz([ [[1,0]],[[0,0]] ])
-        x=matriz([ [[0,0],[1,0]],[[1,0],[0,0]] ])
         h=m.multiplicaEscalar(c1)
-        print(h)
+        
+        v0=matriz([ [[1,0]],[[0,0]] ] )
+        v1=matriz([ [[1,0]],[[0,0]] ])        
         v00=v0.productoTensor(v1)
-        print(v00)
+        
+        
         m1=x.productoTensor(h)
         m2=h.productoTensor(h)
+        
+        print(v00)
         print(m1)
         print(m2)
         print((m2).multiplica(m1).multiplica(v00))

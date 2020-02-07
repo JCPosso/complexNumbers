@@ -59,27 +59,15 @@ class complejo:
                 return ("NOT possible to convert!")
             else :
                 fhi=round(math.sqrt(self.real**2+self.img**2),2)
-                ang=round(math.atan(self.img/self.real),2)
+                ang=round(math.atan2(self.img,self.real),2)
                 return complejo(fhi,ang)
               
         def fase(self):
             #Retorna la fase del numero complejo
                 
             if(self.real==0):return "indefinido!!"
-            res= abs(math.atan(self.img/self.real))
-            
-            #cuadrante 2
-            if(self.img>0 and  self.real<0):res=math.pi-res
-            #cuadrante 3
-            if(self.img<0 and  self.real<0):res=math.pi+res
-            #cuadrante 4
-            if(self.img<0 and  self.real>0):res=math.pi*2-res
-            
-
-            # convertir de radianes a grados
-            res=round(res*(180/math.pi),2)
-            
-            return str(res)+"°Grados"
+            res= round(math.atan2(self.img,self.real),2)
+            return res
 
         def __str__(self):
                 s1=str(self.real)
@@ -97,6 +85,3 @@ class complejo:
                         if (self.img>0):return s1+"+"+s2
                         if (self.img<0):return s1+s2
                 return s1
-                                
-                        
-

@@ -111,15 +111,15 @@ class TestMathMethods(unittest.TestCase):
         def test01_faseCuadrante2(self):
                 b=complejo(-5,4)
                 r=b.fase()
-                self.assertEqual(r,'141.34°Grados')
+                self.assertEqual(r,2.47)
         def test02_faseCuadrante3(self):
                 c=complejo(-8,-5)
                 r=c.fase()
-                self.assertEqual(r,'212.01°Grados')
+                self.assertEqual(r,-2.58)
         def test03_faseCuadrante4(self):
                 c=complejo(9,-2)
                 r=c.fase()
-                self.assertEqual(r,'347.47°Grados')
+                self.assertEqual(r,-0.22)
         def test04_noRetornarFaseSiEsIndefinido(self):
                 c=complejo(0,0)
                 r=c.fase()
