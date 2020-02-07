@@ -1,11 +1,55 @@
 # Complex Numbers
 
 ComplexNumbers es una libreria para el manejo de numeros complejos ,matrices complejas Útil para la realizacion de  simulaciones de circuitos cuánticos.
+##Resumen de las operaciones que se pueden hacer
+Dentro de la libreria numerosComplejos.py  se pueden encontrar las distintas operaciones que se pueden realizar con numeros complejos tales como :
+>- Sumar.
+>- Restar.
+>- Dividir.
+>- Multiplicar.
+>- Modulo.
+>- Conjugado.
+>- Pasar de coordenadas cartesianas a polares y viceviersa.
+>- Fase.
+
+Y por otro lado encontramos la libreria matrices.py la cual nos permite realizar las siguientes operaciones:
+
+>- Adición de vectores complejos.
+>- Inversa de vectores complejos.
+>- Multiplicación escalar de vectores complejos.
+>- Adición de matrices complejos.
+>- Inversa de matrices complejos.
+>- Multiplicación escalar de matrices complejas.
+>- Matriz transpuesta.
+>- Matriz conjugada.
+>- Matriz adjunta.
+>- Función para calcular la "acción" de una matriz sobre un vector.
+>- Norma de matrices.
+>- Distancia entrematrices.
+>- Revisar si es unitaria.
+>- Revisar si es Hermitian.
+>- Producto tensor.
 
 ## Comenzando 🚀
 * Clone éste repositorio en su máquina local usando [ComplexNumbers](https://github.com/JCPosso/complexNumbers.git)- Repositorio
+*Para hacer un buen uso de las funciones , cabe recordar que la entrada debe ser tipo matricial y para la creacion de numeros complejos en forma de tuplas  en donde se especifica la parte real e imaginaria como por ejemplo:
+```
+a= complejo(5,4)
+b= complejo(5,0)
+c= complejo(0,2)
+
+```
+y para la entrada de vectores y matrices , se realiza  como en el siguiente ejemplo :
+```
+#vector
+V=matriz([ [[3,2]],[[1,9]],[[3,2]] ])
+#matriz
+A=matriz([ [[1,2],[3,2],[6,6]],[[9,9],[1,9],[0,0]],[[7,1],[4,5],[3,2]] ])
+```
 
 ### Pre-requisitos 📋
+Sistemas operatrivos: mac , linux o windows.
+Editor de archivos .py
 
 Python 3
 
@@ -15,7 +59,7 @@ Step 1: Download the Python 3 Installer. Open a browser window and navigate to t
 Step 2: Run the Installer. Once you have chosen and downloaded an installer, simply run it by double-clicking on the downloaded file.
 
 ```
-Git
+Git(opcional)
 ```
 ¿Como descargar git?
 
@@ -36,9 +80,17 @@ En la siguiente pantalla nos muestra algunas configuraciones que podemos cambiar
 Para comprobar que Git se instaló correctamente solo vamos a Windows -> y escribimos Git, veremos que aparecerán los programas básicos para comenzar a trabajar con Git.
 ```
 ### Instalación 🔧
-siga instrucciones en https://git-scm.com/book/en/v2/Getting-Started-Installing-Git para ejecutar un entorno de desarrollo en git
+* Descargue los archivos de libreria
+* Ponga las librerias en la carpeta en la cual se encuentra el proyecto
+* Importe la libreria al archivo .py del proyecto
+* Utilizce las funciones de libreria .
+
+*siga instrucciones en https://git-scm.com/book/en/v2/Getting-Started-Installing-Git para ejecutar un entorno de desarrollo en git
+
 ## Ejecutando las pruebas ⚙️
-Ejecute las prueblas test_numerosComplejos y test_vectoresyMatrices desde la IDLE .
+Para ejecutar los test debe descargar el archivo 'test_matrices.py' y 'test_numerosComplejos' en los cuales se encuentran las diferentes pruebas realizadas y los datos que deberia arrojar para distintos resultados.
+Ejecute las prueblas test_numerosComplejos y test_matrices desde su editor .py .
+
 ### Pruebas end-to-end 🔩
 Se realizaron pruebas para verificar , cómo se comportan las funciones para el tratamiento de los numeros complejos y si cumplen con las reglas basicas de aritmetica , asi como reglas algebraicas para la operacion adecuada de complejos , vectores y matrices .
 ```
@@ -50,9 +102,10 @@ Ejemplo de prueba para producto Tensor para verificar si se puede obtener un pro
         d=matriz([ [[0,0]],[[0,0]],[[3,0]] ])
         self.assertEqual(str((k.productoTensor(b)).suma(c.productoTensor(d))),'[ 8 ]\n[ 0 ]\n[ 0 ]\n[ 0 ]\n[ 0 ]\n[ 18 ]\n')
 ```
-
+Estan pruebas tienen casos sacados del libro  , las distintas propiedades especificadas en éste y casos arbitrarios para corroborar su funcionamiento.
 ## Versionado 📌
-Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones disponibles, mira los [tags en este repositorio](https://github.com/JCPosso/complex Numers/tags).
+Se usó [SemVer](http://semver.org/) para el versionado. Para todas las versiones disponibles, mira los [tags en este repositorio(https://github.com/JCPosso/complex Numers/tags).
+
 Versiones actuales de la libreria :
 * (https://github.com/JCPosso/complexNumbers/releases/tag/v1.0-Beta). 
 
@@ -64,7 +117,7 @@ Versiones actuales de la libreria :
 
 ## Licencia 📄
 
-Este proyecto está bajo [LICENSE.txt](https://github.com/JCPosso/complexNumbers/blob/master/LICENCE.txt).
+Este proyecto está bajo licencia [LICENSE.txt](https://github.com/JCPosso/complexNumbers/blob/master/LICENCE.txt).
 
 ## Referencias
 Inspirando en:
