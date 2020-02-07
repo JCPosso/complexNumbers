@@ -1,7 +1,7 @@
 # Complex Numbers
 
 ComplexNumbers es una libreria para el manejo de numeros complejos ,matrices complejas Útil para la realizacion de  simulaciones de circuitos cuánticos.
-##Resumen de las operaciones que se pueden hacer
+## Resumen de las operaciones que se pueden hacer
 Dentro de la libreria numerosComplejos.py  se pueden encontrar las distintas operaciones que se pueden realizar con numeros complejos tales como :
 >- Sumar.
 >- Restar.
