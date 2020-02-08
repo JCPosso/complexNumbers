@@ -118,7 +118,6 @@ class matriz:
                             for k in range(len(self.c[0])):
                                     if( self.c[j][k]!=n.c[k][j].conjugado()):
                                             return False
-                                    #n.c[k][j].conjugado()
                 return True
         
         def isUnitary(self):
@@ -170,8 +169,7 @@ if __name__ == '__main__':
         
         m1=x.productoTensor(h)
         m2=h.productoTensor(h)
-        
-        print(v00)
-        print(m1)
-        print(m2)
-        print((m2).multiplica(m1).multiplica(v00))
+        print("Vector 00|>\n"+str(v00))
+        print("M1\n"+str(m1))
+        print("M2\n"+str(m2))
+        print("---Resultado---\n"+str((m2).multiplica(m1).multiplica(v00)))
