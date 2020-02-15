@@ -1,74 +1,108 @@
 import math;
-"""Librería computación Cuántica: Números complejos
-   librería para hacer operaciones entre números complejos.
-   @author (Juan Camilo Posso G.) 
-   @version (1.0 or 16/01/2020)
-"""
 class complejo:
+        '''
+        Libreria de Numeros complejos de argumentos r,i en donde r e i son las componentes cartesianes
+        real e imaginaria , respectivamente.Todos los atributos se daran tanto en pares de  complejos
+        o de forma unaria.
+        '''
         def __init__(self,r,i):
-            self.real= r
-            self.img= i
+                self.real= r
+                self.img= i
         def __eq__(self, other):
-            """Override"""
-            if isinstance(other, complejo):
-                return( self.real == other.real and self.img == other.img)
-            return False
-
-        
+                """Override"""
+                if isinstance(other, complejo):
+                        return( self.real == other.real and self.img == other.img)
+                return False
         def suma(self,b):
-            #suma de dos numeros complejos
-            real = self.real + b.real
-            img  = self.img + b.img
-            return complejo(real,img)
-       
+                '''
+                Retorna la suma de dos complejos.
+
+                Excepciones:
+                si alguno de los dos numeros no es un complejo
+                '''
+                self.compare(b)
+                real = self.real + b.real
+                img  = self.img + b.img
+                return complejo(real,img)
         def resta(self,b):
-            #suma de dos numeros complejos
-            real = self.real - b.real
-            img  = self.img - b.img
-            return complejo(real,img)
+                '''
+                Retorna la resta de dos complejos.
 
+                Excepciones:
+                si alguno de los dos numeros no es un complejo
+                '''
+                self.compare(b)
+                real = self.real - b.real
+                img  = self.img - b.img
+                return complejo(real,img)
         def multiplica(self,b):
-            #Retorna multiplicacion de dos numeros complejos
-            real=self.real*b.real - self.img*b.img
-            img= self.real*b.img + b.real*self.img
-            return complejo(real,img)
-       
+                '''
+                Retorna la multiplicación de dos complejos.
+
+                Excepciones:
+                Si alguno de los dos numeros no es un complejo
+                '''
+                self.compare(b)
+                real=self.real*b.real - self.img*b.img
+                img= self.real*b.img + b.real*self.img
+                return complejo(real,img)
         def divide(self,b):
-            #Retorna division de dos numeros complejos a 2  decimales
-            x=(self.real*b.real+self.img*b.img)
-            y=(b.real*self.img-self.real*b.img)
-            divisor=( b.real**2)+ (b.img**2) 
-            if(divisor==0):
-                return ("Divisor is zero!!")
-            else :
-                return complejo(round(x/divisor,2),round(y/divisor,2))
-              
+                '''
+                Retorna la división de dos complejos.
+                Parte real e imaginaria redondeados a dos decimales.
+
+                Excepciones:
+                si alguno de los dos numeros no es un complejo
+                Si el divisor es cero
+                '''
+                self.compare(b)
+                try:
+                        x=(self.real*b.real+self.img*b.img)
+                        y=(b.real*self.img-self.real*b.img)
+                        divisor=( b.real**2)+ (b.img**2)
+                        return complejo(round(x/divisor,2),round(y/divisor,2))
+                except ZeroDivisionError as m:
+                        raise Exception("Division por 0!!!")
         def modulo(self):
-            #Retorna el modulo del numero complejo
-            mod= math.sqrt(self.real**2+self.img**2)
-
-            return (round(mod,2))
-
+                '''
+                Retorna la módulo del complejo.
+                Redondeado a dos decimales.
+                '''
+                mod= math.sqrt(self.real**2+self.img**2)
+                return (round(mod,2))
         def conjugado(self):
-            #Retorna el conjugado del numero complejo
-            return complejo(self.real,self.img*-1)
-
+                '''
+                Retorna conjugado del complejo.
+                '''
+                return complejo(self.real,self.img*-1)
         def aPolar(self):
-           #Retorna Coordenada polar del numero complejo
-            if( self.real==0 ):
-                return ("NOT possible to convert!")
-            else :
-                fhi=round(math.sqrt(self.real**2+self.img**2),2)
-                ang=round(math.atan2(self.img,self.real),2)
-                return complejo(fhi,ang)
-              
-        def fase(self):
-            #Retorna la fase del numero complejo
+                '''
+                Retorna el numero en coordenadas polares.
                 
-            if(self.real==0):return "indefinido!!"
-            res= round(math.atan2(self.img,self.real),2)
-            return res
-
+                Excepciones:
+                Si la Parte real es cero
+                '''
+                try:
+                        fhi=round(math.sqrt(self.real**2+self.img**2),2)
+                        ang=round(math.atan2(self.img,self.real),2)
+                        return complejo(fhi,ang)
+                except ZeroDivisionError as m:
+                        raise Exception("Parte Real es Cero!!!")
+        def fase(self):
+                '''
+                Retorna la Fase del número.
+                
+                Excepciones:
+                Si la Parte real es cero
+                '''
+                try:
+                        res= round(math.atan2(self.img,self.real),2)
+                        return res
+                except ZeroDivisionError as m:
+                        raise Exception("Parte Real es Cero!!!")
+        def compare(self,r):
+                if (not (isinstance(self,complejo) and isinstance(r,complejo)) ) :
+                        raise Exception("ERROR:Favor Ingresar un formato válido")
         def __str__(self):
                 s1=str(self.real)
                 if(self.img!=1 and self.img!=-1 ):

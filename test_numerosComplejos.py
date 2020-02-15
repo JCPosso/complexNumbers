@@ -73,9 +73,13 @@ class TestMathMethods(unittest.TestCase):
                 x=a.divide(d)
                 self.assertEqual(x,a)
         def test_divisionPorCero(self):
-                d=complejo(0,0)
-                x=a.divide(d)
-                self.assertEqual(x,"Divisor is zero!!")
+                try:
+                        d=complejo(0,0)
+                        x=a.divide(d)
+                except Exception :
+                        pass
+                else:
+                        assert False 
         # Se evalua  modulo
         def test01_modulo(self):
                 r=a.modulo()
@@ -101,9 +105,14 @@ class TestMathMethods(unittest.TestCase):
                 r=c.aPolar()
                 self.assertEqual(r,complejo(2.24, 0.46))
         def test02_noPasarAPolarSiDivisorEsCero(self):
-                d=complejo(0,0)
-                x=d.aPolar()
-                self.assertEqual(x,"NOT possible to convert!")
+                try:
+                        d=complejo(0,0)
+                        x=d.aPolar()
+                        self.assertFalse(x)
+                except Exception :
+                        pass
+                else:
+                        assert False 
         def test03_pasarAPolar(self):
                 r=b.aPolar()
                 self.assertEqual(r,complejo(6.4, 0.67))
@@ -121,8 +130,13 @@ class TestMathMethods(unittest.TestCase):
                 r=c.fase()
                 self.assertEqual(r,-0.22)
         def test04_noRetornarFaseSiEsIndefinido(self):
-                c=complejo(0,0)
-                r=c.fase()
-                self.assertEqual(r,'indefinido!!')
+                try:
+                        c=complejo(0,0)
+                        r=c.fase()
+                        self.assertTrue(r)
+                except Exception :
+                        pass
+                else:
+                        assert False 
 if __name__ == '__main__':
         unittest.main()
