@@ -103,6 +103,7 @@ class complejo:
         def compare(self,r):
                 if (not (isinstance(self,complejo) and isinstance(r,complejo)) ) :
                         raise Exception("ERROR:Favor Ingresar un formato válido")
+
         def __str__(self):
                 s1=str(self.real)
                 if(self.img!=1 and self.img!=-1 ):
