@@ -96,11 +96,11 @@ class matriz:
                 return self
         
         def alcanceSobre(self,vector):
-                if(len(vector[0])==1 ):
-                        res=vectorComplejo([[0,0]]*len(vector))
+                if(len(vector.c[0])==1 ):
+                        res=matriz.iniciar(len(vector.c),0)
                         for j in range(len(self.c)):
                                 for k in range(len(self.c[0])):
-                                        res.c[k] =res.c[k].suma( self.c[j][k].multiplica(vector[k]) )
+                                        res.c[k][0] =res.c[k][0].suma( self.c[j][k].multiplica(vector[k][0]) )
                         return res
                 return "no ingresó un vector, intente nuevamente!"
         
