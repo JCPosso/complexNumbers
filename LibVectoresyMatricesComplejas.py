@@ -142,6 +142,28 @@ class matriz:
                         for k in range(len(matrix.c[0])):
                                 matrix.c[j][k]=self.c[j//len(B.c)][k//len(B.c[0])].multiplica(B.c[j%len(B.c)][k%len(B.c[0])])
                 return matrix
+        def potencia(self,n):
+                if(n==1):
+                        return self
+                else:
+                        if( (n%2)==0):
+                                return (self.potencia(n//2)).multiplica(self.potencia(n//2))
+                        else:
+                                return (self.potencia(n//2).multiplica(self.potencia(n//2))).multiplica(self)
+
+        def state(self,v,times):
+                return (self.potencia(times)).alcanceSobre(v)
+        
+        def combinar(m1,m2,v1,v2,n):
+                if (n==0):
+                        e1=v1
+                        e2=v2
+                else:
+                        e1=m1.potencia(n).multiplica(v1)
+                        e2=m2.potencia(n).multiplica(v2)
+                return e1.productoTensor(e2)
+        def cuadrada(self):
+                return len(self.c)==len(self.c[0])    
         def __str__(self):
                 s=""
                 for j in range(len(self.c)):
