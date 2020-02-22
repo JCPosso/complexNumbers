@@ -97,6 +97,10 @@ class TestMathMethods(unittest.TestCase):
                 res1=A.multiplica(B).transpuesta()
                 res2=B.transpuesta().multiplica(A.transpuesta())
                 self.assertEqual(res1,res2)
+        def test02_alcance(self):
+                A=matriz([ [[1,2],[3,2],[6,6]],[[9,9],[1,9],[0,0]],[[7,1],[4,5],[3,2]] ])
+                V=matriz([ [[3,2]],[[1,9]],[[3,2]]])
+                self.assertEqual('[ -10+67i ]\n[ -71+63i ]\n[ -17+70i ]\n',str(A.alcanceSobre(V)))                   
         def test_MatrizMultiplicacionTieneConjugada(self):
                 res1=A.multiplica(B).conjugada()
                 res2=A.conjugada().multiplica(B.conjugada())
