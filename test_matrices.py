@@ -173,7 +173,20 @@ class TestMathMethods(unittest.TestCase):
                 c=matriz([ [[0,0]],[[6,0]] ])
                 d=matriz([ [[0,0]],[[0,0]],[[3,0]] ])
                 self.assertEqual(str((k.productoTensor(b)).suma(c.productoTensor(d))),'[ 8 ]\n[ 0 ]\n[ 0 ]\n[ 0 ]\n[ 0 ]\n[ 18 ]\n')
-            
+        def test_marbles(self):
+                bol=matriz([  [ [0,0],[0,0],[0,0],[0,0],[0,0],[0,0] ],
+                              [ [0,0],[0,0],[0,0],[0,0],[0,0],[0,0] ],
+                              [ [0,0],[1,0],[0,0],[0,0],[0,0],[1,0] ],
+                              [ [0,0],[0,0],[0,0],[1,0],[0,0],[0,0] ],
+                              [ [0,0],[0,0],[1,0],[0,0],[0,0],[0,0] ],
+                              [ [1,0],[0,0],[0,0],[0,0],[1,0],[0,0] ]
+                              ])
+                vector=matriz([ [[6,0]],[[2,0]],[[1,0]],[[5,0]],[[3,0]],[[10,0]] ])
+
+                t2=bol.alcanceSobre(vector)
+                print(t2)
+                assert  True
+                        
         ###VERIFICAR ENTRADAS
         def test_sumaMatricesTamañosIguales(self):
                 v1= matriz([ [[1,2]],[[3,5]],[[6,8]] ])
