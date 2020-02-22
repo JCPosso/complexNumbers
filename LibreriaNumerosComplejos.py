@@ -11,7 +11,7 @@ class complejo:
         def __eq__(self, other):
                 """Override"""
                 if isinstance(other, complejo):
-                        return( self.real == other.real and self.img == other.img)
+                        return( round(self.real,2) == round(other.real,2) and round(self.img,2) == round(other.img,2))
                 return False
         def suma(self,b):
                 '''
@@ -69,7 +69,7 @@ class complejo:
                 Redondeado a dos decimales.
                 '''
                 mod= math.sqrt(self.real**2+self.img**2)
-                return (round(mod,2))
+                return  mod
         def conjugado(self):
                 '''
                 Retorna conjugado del complejo.

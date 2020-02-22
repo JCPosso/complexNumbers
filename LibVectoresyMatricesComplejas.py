@@ -18,8 +18,10 @@ class matriz:
                         for j in range(len(self.c)):
                                 for k in range(len(self.c[0])):
                                         if isinstance(other.c[j][k], complejo):
-                                                if(self.c[j][k].real != other.c[j][k].real or self.c[j][k].img != other.c[j][k].img):return False
-                return True
+                                                if(round(self.c[j][k].real,4) != round(other.c[j][k].real,4) or round(self.c[j][k].img,4) != round(other.c[j][k].img,4)):
+                                                        return False
+                        return True
+                return False
         def iniciar(f,c):
                 m=[]
                 for i in range(f):
@@ -172,18 +174,3 @@ class matriz:
                                 s+=str(self.c[j][k])+" "
                         s+=']\n'
                 return s
-
-if __name__ == '__main__':
-        x=matriz([ [[0,0],[1,0]],[[1,0],[0,0]] ])
-        m= matriz( [ [[1,0],[1,0]],[[1,0],[-1,0]] ])
-        c1=complejo(1/math.sqrt(2),0)
-        h=m.multiplicaEscalar(c1)
-        v0=matriz([ [[1,0]],[[0,0]] ] )
-        v1=matriz([ [[1,0]],[[0,0]] ])        
-        v00=v0.productoTensor(v1)
-        m1=x.productoTensor(h)
-        m2=h.productoTensor(h)
-        print("Vector 00|>\n"+str(v00))
-        print("M1\n"+str(m1))
-        print("M2\n"+str(m2))
-        print("---Resultado---\n"+str((m1).multiplica(m2).multiplica(v00)))

@@ -83,23 +83,23 @@ class TestMathMethods(unittest.TestCase):
         # Se evalua  modulo
         def test01_modulo(self):
                 r=a.modulo()
-                self.assertEqual(r,(3.61))
+                self.assertEqual(round(r,2),3.61)
         def test02_modulo(self):
                 r=b.modulo()
-                self.assertEqual(r,(6.4))
+                self.assertEqual(round(r,2),6.4)
         def test03_modulo(self):
                 r=c.modulo()
-                self.assertEqual(r,(2.24))
+                self.assertEqual(round(r,2),2.24)
         #se evalua el conjugado
         def test01_conjugado(self):
                 r=a.conjugado()
-                self.assertEqual(str(r),'3-2i')
+                self.assertTrue(r==complejo(3,-2))
         def test02_conjugado(self):
                 r=b.conjugado()
-                self.assertEqual(str(r),'5-4i')
+                self.assertTrue(r==complejo(5,-4))
         def test03_conjugado(self):
                 r=c.conjugado()
-                self.assertEqual(str(r),'2-i')
+                self.assertTrue(r==complejo(2,-1))
         # Se evaluan la conversion de cartesiano a polar
         def test01_pasarAPolar(self):
                 r=c.aPolar()
