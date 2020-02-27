@@ -165,7 +165,50 @@ class matriz:
                         e2=m2.potencia(n).multiplica(v2)
                 return e1.productoTensor(e2)
         def cuadrada(self):
-                return len(self.c)==len(self.c[0])    
+                return len(self.c)==len(self.c[0])
+        def matriz_estado_probabilistico(self,n_rendijas,n_blancos ):
+                n_vertices= 1+ n_rendijas+ n_blancos
+                b= matriz.iniciar(n_vertices,n_vertices)
+                for i in range( 1, n_rendijas+1):
+                        b.c[i][0].real=1/(n_rendijas)
+                m=1
+                c=1
+                for j in range( n_rendijas+1, n_vertices):
+                        if (c%2!=0 and c!=1 and m<n_rendijas):
+                                b.c[j][m].real=1/3
+                                c=1
+                                m+=1
+                        b.c[j][m].real=1/3
+                        c+=1
+                for i in range(n_blancos):
+                        b.c[n_vertices-1-i][n_vertices-1-i]=complejo(1,0)
+                return b
+                        
+        def matriz_estado_cuantico(self,n_rendijas,n_blancos ):
+                n_vertices= 1+ n_rendijas+ n_blancos
+                b= matriz.iniciar(n_vertices,n_vertices)
+                for i in range( 1, n_rendijas+1):
+                        b.c[i][0].real=1/(math.sqrt(n_rendijas))
+                m=1
+                c=1
+                real=-math.sqrt(6)/6
+                img=math.sqrt(6)/6
+                res=complejo(real,img)
+                for j in range( n_rendijas+1, n_vertices):
+                        if (c%2!=0 and c!=1 and m<n_rendijas):
+                                res=complejo(real*-1,img*-1)
+                                b.c[j][m]=res
+                                c=1
+                                m+=1
+                        res=complejo(real,img)
+                        if(c%2==0):
+                                res=complejo(real,img*-1)
+                        b.c[j][m]=res
+                        c+=1
+                for i in range(n_blancos):
+                        b.c[n_vertices-1-i][n_vertices-1-i]=complejo(1,0)
+                        
+                return b
         def __str__(self):
                 s=""
                 for j in range(len(self.c)):
