@@ -154,6 +154,7 @@ class matriz:
                                 return (self.potencia(n//2).multiplica(self.potencia(n//2))).multiplica(self)
 
         def state(self,v,times):
+                if(times==0): return self.alcanceSobre(v)
                 return (self.potencia(times)).alcanceSobre(v)
         
         def combinar(m1,m2,v1,v2,n):
