@@ -29,6 +29,7 @@ Y por otro lado encontramos la libreria matrices.py la cual nos permite realizar
 >- Revisar si es unitaria.
 >- Revisar si es Hermitian.
 >- Producto tensor.
+>- Revisar si es Doblemente Estocástica
 >- Experimento Multirendijas cuantico.
 >- Experimento Multirendijas probabilistico.
 >- Graficar vectores (Matplotlib).
