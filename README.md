@@ -29,6 +29,9 @@ Y por otro lado encontramos la libreria matrices.py la cual nos permite realizar
 >- Revisar si es unitaria.
 >- Revisar si es Hermitian.
 >- Producto tensor.
+>- Experimento Multirendijas cuantico.
+>- Experimento Multirendijas probabilistico.
+>- Graficar vectores (Matplotlib).
 
 ## Comenzando 🚀
 * Clone éste repositorio en su máquina local usando [ComplexNumbers](https://github.com/JCPosso/complexNumbers.git)- Repositorio
@@ -93,6 +96,8 @@ Para comprobar que Git se instaló correctamente solo vamos a Windows -> y escri
 Para ejecutar los test debe descargar el archivo 'test_matrices.py' y 'test_numerosComplejos.py' en los cuales se encuentran las diferentes pruebas realizadas y los datos que deberia arrojar para distintos resultados.
 
 Ejecute las prueblas test_numerosComplejos y test_matrices desde su editor .py .
+
+Pruebas test_clasicTocuant.py Para revisar funcionamiento de las funciones para n-rendijas de forma probabilistica o cuantica.
 
 ### Pruebas end-to-end 🔩
 Se realizaron pruebas para verificar , cómo se comportan las funciones para el tratamiento de los numeros complejos y si cumplen con las reglas basicas de aritmetica , asi como reglas algebraicas para la operacion adecuada de complejos , vectores y matrices .
