@@ -19,7 +19,7 @@ Para la realizacion del experimento se realizo con los siguientes materiales  :
 ### Desarrollo 
 Para realizar el experimento se procedio a colocar el laser sobre su base , siendo presionado con cinta aislante , luego se procedio a poner la base de 3 rectangular de rendijas sobre un soporte por el cual se va deslizando para que la luz del laser pasara por cada una de las rendijas , como se muestra a continuacion.
 
-![](src/1.jpeg)
+![](src/3.jpeg)
 
 ### Resultados ⚙️
 
@@ -29,6 +29,7 @@ A continuacion se muestran las Imagenes  del  fenomeno de interferencia ocasiona
 ### Conclusiones📋
 En conclusion , se pudo observar y analizar como  la luz del laser tuvo dos comportamientos antes y despues de pasar por las rendijas , antes la luz se fragmentaba en cada una de las posibles rendijas por donde se podia pasar y luego de pasar por estas   se produce un fenomeno de interferencia haciendo que algunos lugares del patron se vean oscuros y otros mas claros , tal cual como sucede con la interferencia ondulatoria. Cuando mas aumentabamos el nivel de rendijas el patron se hacia mas alargado  tal como se mostrababa en las imagenes
 según lo observado se ve que el resultado se asemeja más al comportamiento de ondas con el patrón de interferencia, pero esto en la época del experimento desconsternaba a los científicos el hecho de que al poner detectores después de la rendija para saber por dónde pasaba la luz el patrón del experimento era equivalente al de las partículas, lo que nos da entender que cuando el experimento está siendo monitoreado nos da como resultado el de las partículas y cuando no el resultado es el de patrón de interferencia de las ondas, como se muestra a continuación:
+![](src/1.jpeg)
 
 ## Referencias
 Inspirando en:
