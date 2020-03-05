@@ -1,6 +1,17 @@
 # Historia
 El experimento de Young, realizado en 1801 por Thomas Young , con el fin de comprobar la naturaleza Ondulatoria de la luz .
-![image](https://davidhuerta.typepad.com/.a/6a01347ff0d110970c01a511b6ad30970c-500wi)
+
+## SIMULACION
+Con la librería  vectoresyMatricesComplejas.py  se buscó comprobar como surgia el patrón  en una simulacion cuántica tal y como se muestra a continuacion:
+![](src/6.jpeg)
+*Se logró observar como se generaba el efecto . A continuacion se procedio a ingresar un vector  de estado inicial.
+![](src/7.jpeg)
+*Luego ,  se procedio a ingresar el numero de rendijas del sistema , los blancos y el vector de probabilidades de cada rendija a cada blanco .
+* Para hallar la matriz de probabilidades , se  halló el modulo al cuadrado de cada  uno de los numeros lo cual nos genera la siguiente matriz:
+![](src/9.jpeg)
+* Y por ultimo se ingreso el vector de estado en donde  el fotón se enuentra en la primra parte del sistema  de la siguiente forma 
+Al terminar la simulacon se procedio a graficar el vector de estados resultantes: y el resultado fue el siguiente :
+![](src/4.jpeg)
 ## Experimento
 ### Materiales 
 Para la realizacion del experimento se realizo con los siguientes materiales  :
@@ -32,6 +43,7 @@ A continuacion se muestran las Imagenes  del  fenomeno de interferencia ocasiona
 En conclusion , se pudo observar y analizar como  la luz del laser tuvo dos comportamientos antes y despues de pasar por las rendijas , antes la luz se fragmentaba en cada una de las posibles rendijas por donde se podia pasar y luego de pasar por estas   se produce un fenomeno de interferencia haciendo que algunos lugares del patron se vean oscuros y otros mas claros , tal cual como sucede con la interferencia ondulatoria. Cuando mas aumentabamos el nivel de rendijas el patron se hacia mas alargado  tal como se mostrababa en las imagenes
 según lo observado se ve que el resultado se asemeja más al comportamiento de ondas con el patrón de interferencia, pero esto en la época del experimento desconsternaba a los científicos el hecho de que al poner detectores después de la rendija para saber por dónde pasaba la luz el patrón del experimento era equivalente al de las partículas, lo que nos da entender que cuando el experimento está siendo monitoreado nos da como resultado el de las partículas y cuando no el resultado es el de patrón de interferencia de las ondas, como se muestra a continuación:
 ![](src/1.jpeg)
+
 
 ## Referencias
 Inspirando en:
