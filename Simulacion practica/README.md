@@ -25,6 +25,8 @@ Para realizar el experimento se procedio a colocar el laser sobre su base , sien
 
 A continuacion se muestran las Imagenes  del  fenomeno de interferencia ocasionado por cada una de las rendijas elaboradas.
 
+[![IMAGE ALT TEXT](https://www.youtube.com/watch?v=ww_fMEEHPKs)
+
 
 ### Conclusiones📋
 En conclusion , se pudo observar y analizar como  la luz del laser tuvo dos comportamientos antes y despues de pasar por las rendijas , antes la luz se fragmentaba en cada una de las posibles rendijas por donde se podia pasar y luego de pasar por estas   se produce un fenomeno de interferencia haciendo que algunos lugares del patron se vean oscuros y otros mas claros , tal cual como sucede con la interferencia ondulatoria. Cuando mas aumentabamos el nivel de rendijas el patron se hacia mas alargado  tal como se mostrababa en las imagenes
