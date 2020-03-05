@@ -25,7 +25,7 @@ Para realizar el experimento se procedio a colocar el laser sobre su base , sien
 
 A continuacion se muestran las Imagenes  del  fenomeno de interferencia ocasionado por cada una de las rendijas elaboradas.
 
-[![IMAGE ALT TEXT](https://www.youtube.com/watch?v=ww_fMEEHPKs)
+[![Alt text](https://img.youtube.com/vi/VID/0.jpg)](https://www.youtube.com/watch?v=ww_fMEEHPKs)
 
 
 ### Conclusiones📋
