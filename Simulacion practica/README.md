@@ -19,6 +19,8 @@ Para la realizacion del experimento se realizo con los siguientes materiales  :
 ### Desarrollo 
 Para realizar el experimento se procedio a colocar el laser sobre su base , siendo presionado con cinta aislante , luego se procedio a poner la base de 3 rectangular de rendijas sobre un soporte por el cual se va deslizando para que la luz del laser pasara por cada una de las rendijas , como se muestra a continuacion.
 
+![](src/1.jpeg)
+
 ### Resultados ⚙️
 
 A continuacion se muestran las Imagenes  del  fenomeno de interferencia ocasionado por cada una de las rendijas elaboradas.
