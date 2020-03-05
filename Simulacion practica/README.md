@@ -2,16 +2,21 @@
 El experimento de Young, realizado en 1801 por Thomas Young , con el fin de comprobar la naturaleza Ondulatoria de la luz .
 
 ## SIMULACION
-Con la librería  vectoresyMatricesComplejas.py  se buscó comprobar como surgia el patrón  en una simulacion cuántica tal y como se muestra a continuacion:
-![](src/6.jpeg)
-*Se logró observar como se generaba el efecto . A continuacion se procedio a ingresar un vector  de estado inicial.
-![](src/7.jpeg)
-*Luego ,  se procedio a ingresar el numero de rendijas del sistema , los blancos y el vector de probabilidades de cada rendija a cada blanco .
+* Con la librería  vectoresyMatricesComplejas.py  se buscó comprobar como surgia el patrón  en una simulacion cuántica tal y como se muestra a continuacion:
+
+![](src/6.PNG)
+
+* Se logró observar como se generaba el efecto . A continuacion se procedio a ingresar un vector  de estado inicial.
+
+![](src/7.PNG)
+* Luego ,  se procedio a ingresar el numero de rendijas del sistema , los blancos y el vector de probabilidades de cada rendija a cada blanco .
 * Para hallar la matriz de probabilidades , se  halló el modulo al cuadrado de cada  uno de los numeros lo cual nos genera la siguiente matriz:
-![](src/9.jpeg)
+
+![](src/9.PNG)
 * Y por ultimo se ingreso el vector de estado en donde  el fotón se enuentra en la primra parte del sistema  de la siguiente forma 
 Al terminar la simulacon se procedio a graficar el vector de estados resultantes: y el resultado fue el siguiente :
-![](src/4.jpeg)
+
+![](src/4.png)
 ## Experimento
 ### Materiales 
 Para la realizacion del experimento se realizo con los siguientes materiales  :
