@@ -6,12 +6,12 @@ El experimento de Young, realizado en 1801 por Thomas Young , con el fin de comp
 
 ![](src/6.PNG)
 
-* Se logró observar como se generaba el efecto . A continuacion se procedio a ingresar un vector  de estado inicial.
+* Se logró observar como se generaba el efecto . Primero , como se vio anteriormente se procedio a ingresar un vector  de estado inicial.
 
 ![](src/7.PNG)
 * Luego ,  se procedio a ingresar el numero de rendijas del sistema , los blancos y el vector de probabilidades de cada rendija a cada blanco .
+![](src/8.PNG)
 * Para hallar la matriz de probabilidades , se  halló el modulo al cuadrado de cada  uno de los numeros lo cual nos genera la siguiente matriz:
-
 ![](src/9.PNG)
 * Y por ultimo se ingreso el vector de estado en donde  el fotón se enuentra en la primra parte del sistema  de la siguiente forma 
 Al terminar la simulacon se procedio a graficar el vector de estados resultantes: y el resultado fue el siguiente :
