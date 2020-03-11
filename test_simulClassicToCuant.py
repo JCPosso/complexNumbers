@@ -1,6 +1,6 @@
 import unittest
 import math
-from LibVectoresyMatricesComplejas import *
+from SimulacionCuantica import *
 class TestMathMethods(unittest.TestCase):
         def test01_Canicas_Booleanos(self):
                 ways=matriz([ [ [0,0],[0,0],[0,0],[0,0],[0,0],[0,0] ],
@@ -17,7 +17,7 @@ class TestMathMethods(unittest.TestCase):
 
         def test01_Multirendija_Probabilistico_DosRendijas(self):
                 v= matriz([ [[1/3,0]],[[1/3,0]],[[1/3,0]] ])
-                matrizCaminos, estado     =    matriz.experimento_multirendija_probabilistico(None,2,5,v)
+                matrizCaminos, estado     =    experimento_multirendija_probabilistico(2,5,v)
 
                 self.assertTrue(matrizCaminos == matriz([ [ [0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0] ],
                                                           [ [1/2,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0] ],
@@ -31,7 +31,7 @@ class TestMathMethods(unittest.TestCase):
                 self.assertTrue(estado == matriz([ [[ 0,0 ]],[[ 0,0 ]],[[ 0,0 ]],[[1/6,0]],[[ 1/6,0]],[[ 1/3,0]],[[1/6,0]],[[ 1/6,0]] ]))
 
         def test02_Multirendija_Probabilistico_TresRendijas(self):
-                matrizCaminos, estado     =    matriz.experimento_multirendija_probabilistico(None,3,11,1/5)
+                matrizCaminos, estado     =    experimento_multirendija_probabilistico(3,11,1/5)
 
                 self.assertTrue(matrizCaminos == matriz([ [ [0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0] ],
                                                           [ [1/3,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0] ],
@@ -53,11 +53,11 @@ class TestMathMethods(unittest.TestCase):
                                                    [[ 1/15,0]],[[2/15,0]],[[ 2/15,0]],[[ 1/15,0]],[[ 2/15,0]],[[ 2/15,0]],
                                                    [[ 1/15,0]],[[ 1/15,0]],[[ 1/15,0]]]))
                 """
-                Funcion para graficar ==>  matriz.graficar(estado)
+                Funcion para graficar ==>  graficar(estado)
                 """
         def test01_Multirendija_Cuantico_DosRendijas(self):
                 v= matriz([ [[-math.sqrt(6)/6,math.sqrt(6)/6]],[[-math.sqrt(6)/6,-math.sqrt(6)/6]],[[math.sqrt(6)/6,-math.sqrt(6)/6]] ])
-                matrizCaminos, estado     =    matriz.experimento_multirendija_cuantico(None,2,5,v)
+                matrizCaminos, estado     =    experimento_multirendija_cuantico(2,5,v)
 
                 self.assertTrue(matrizCaminos ==matriz([[ [0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0] ],
                                                         [ [0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0] ],
@@ -69,6 +69,32 @@ class TestMathMethods(unittest.TestCase):
                                                         [ [1/6,0],[0,0],[1/3,0],[0,0],[0,0],[0,0],[0,0],[1,0] ] ]) )
                 
                 self.assertTrue(estado == matriz([ [[ 0,0 ]],[[ 0,0 ]],[[ 0,0 ]],[[1/6,0]],[[ 1/6,0]],[[ 0,0]],[[1/6,0]],[[ 1/6,0]] ]))
+                graficar(estado)
+        def test02_Multirendija_Cuantico_TresRendijas(self):
+                v= matriz([ [[-math.sqrt(10)/10,math.sqrt(10)/10]],[[-math.sqrt(10)/10,math.sqrt(10)/10]],[[-math.sqrt(10)/10,-math.sqrt(10)/10]],[[math.sqrt(10)/10,-math.sqrt(10)/10]],[[math.sqrt(10)/10,-math.sqrt(10)/10]] ])
+                matrizCaminos, estado     =    experimento_multirendija_cuantico(3,11,v)
+                
+                self.assertTrue(matrizCaminos ==matriz([ [  [0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0] ],
+                                                          [ [0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0] ],
+                                                          [ [0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0] ],
+                                                          [ [0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0] ],
+                                                          [ [1/15,0],[1/5,0],[0,0],[0,0],[1,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0] ],
+                                                          [ [1/15,0],[1/5,0],[0,0],[0,0],[0,0],[1,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0] ],
+                                                          [ [1/15,0],[1/5,0],[0,0],[0,0],[0,0],[0,0],[1,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0] ],
+                                                          [ [0,0],[1/5,0],[1/5,0],[0,0],[0,0],[0,0],[0,0],[1,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0] ],
+                                                          [ [0,0],[1/5,0],[1/5,0],[0,0],[0,0],[0,0],[0,0],[0,0],[1,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0] ],
+                                                          [ [1/15,0],[0,0],[1/5,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[1,0],[0,0],[0,0],[0,0],[0,0],[0,0] ],
+                                                          [ [0,0],[0,0],[1/5,0],[1/5,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[1,0],[0,0],[0,0],[0,0],[0,0] ],
+                                                          [ [0,0],[0,0],[1/5,0],[1/5,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[1,0],[0,0],[0,0],[0,0] ],
+                                                          [ [1/15,0],[0,0],[0,0],[1/5,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[1,0],[0,0],[0,0] ],
+                                                          [ [1/15,0],[0,0],[0,0],[1/5,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[1,0],[0,0] ],
+                                                          [ [1/15,0],[0,0],[0,0],[1/5,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[1,0] ], ] ))
+               
+                self.assertTrue(estado == matriz([ [[ 0,0 ]],[[ 0,0 ]],[[ 0,0 ]],[[ 0,0 ]]
+                                                ,[[1/15,0]],[[ 1/15,0]],[[ 1/15,0]],
+                                                [[ 0,0 ]],[[ 0,0 ]],[[1/15,0]],[[ 0,0 ]],[[ 0,0 ]],
+                                                [[ 1/15,0]],[[ 1/15,0]],[[ 1/15,0]] ]))
+                graficar(estado)
                 
 if __name__ == '__main__':
 	unittest.main()
