@@ -1,5 +1,6 @@
-## Simulacion Cuantica 
-* SimulacionCuantica.py es una Libreria que permite diseñar y probar distintos experimentos al estilo doble rendija y multirendija tanto probabilistico como cuántico , en donde se permiten realizar las siguientes operaciones:
+# Simulacion Cuantica 
+## SimulacionCuantica
+* SimulacionCuantica.py es una Libreria que permite diseñar y probar distintos experimentos al estilo doble rendija y multirendija tanto de forma probabilistica como cuántica , en donde se permiten realizar las siguientes operaciones:
 >- Experimento Multirendijas cuantico.
 >- Experimento Multirendijas probabilistico.
 >- Graficar vectores (Matplotlib).
@@ -106,8 +107,11 @@ Como al final hicimos uso de la funcion 'graficar(estado)' ,obtenemos el siguien
 
 ## Historia
 El experimento de Young, realizado en 1801 por Thomas Young , con el fin de comprobar la naturaleza Ondulatoria de la luz .
+
+**Con la libreria se pretendió revisar como surgia el patron de interferencia para luego ser comparado con los resultados experimentales obtenidos, lo cul se procedio a simular el experimento dooble rendija cuantico en libreria:**
+
 ### Simulacion doble rendija libreria
-Con la libreria se pretendió revisar como surgia el patron de interferencia para luego ser comparado con los resultados experimentales obtenidos.
+
 A continuacion  vemos como se determina el experimento  para doble rendija en la libreria y se toma el siguiente experimento
 ![](src/6.PNG)
 
