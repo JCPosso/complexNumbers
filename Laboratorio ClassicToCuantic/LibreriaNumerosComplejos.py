@@ -60,7 +60,7 @@ class complejo:
                         x=(self.real*b.real+self.img*b.img)
                         y=(b.real*self.img-self.real*b.img)
                         divisor=( b.real**2)+ (b.img**2)
-                        return complejo(round(x/divisor,2),round(y/divisor,2))
+                        return complejo(x/divisor,y/divisor)
                 except ZeroDivisionError as m:
                         raise Exception("Division por 0!!!")
         def modulo(self):
