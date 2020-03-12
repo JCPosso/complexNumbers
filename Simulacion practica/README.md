@@ -100,7 +100,7 @@ A continuacion ,un Ejemplo de prueba para ver fenomeno interferencia para 3 rend
                 graficar(estado)
 ```
 Como al final hicimos uso de la funcion 'graficar(estado)' ,obtenemos el siguiente diagrama de barras correspondiente al estado final del sistema el cual permite ver de manera clara su comportamiento final Y el distintivo patron de interferencia asociado:
-![](src/10.PNG)
+![](src/10.png)
 
 # Simulacion Práctica
 
