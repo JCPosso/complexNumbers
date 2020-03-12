@@ -101,3 +101,32 @@ def graficar(stat):
         ax.set_xticks(xx)
         ax.set_xticklabels(nombres)
         plt.show()
+
+def probabilidad(self,pos):
+        f= matriz.instanciar(self)
+        inf=complejo( (f.norma()**2),0)
+        for i in range(len(self.c)):
+                c= self.c[i][0]
+                m= complejo(c.real,c.img)
+                sup= c.multiplica(m.conjugado())
+                if(i==pos):
+                        h=sup.divide(inf)
+                print((sup.divide(inf)).real*100)
+        
+        return  "la probabilidad para la posicion dada es:",h.real*100
+def transicionAmplitud(v1,v2):
+        v1=normalizarKet(v1)
+        v2=normalizarKet(v2)
+        v2.adjunta()
+        return v2.multiplica(v1)
+def normalizarKet(vector):
+        f= matriz.instanciar(vector)
+        inf= complejo(f.norma(),0)
+        for i in range(len(vector.c)):
+                vector.c[i][0]=vector.c[i][0].divide(inf)
+        return vector
+def shots(matriz,vector,disparos):
+        h=0
+        for i in range(disparos):
+                h= matriz.alcanceSobre(vector)
+        return h
