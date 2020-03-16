@@ -84,7 +84,7 @@ def experimento_multirendija_probabilistico(n_rendijas,n_blancos,vector_prob):
         #matriz.graficar(stat)
         return m,stat
         
-def graficar(stat):
+def graficar(stat,title):
         axis_x= []
         axis_y=[]
         for i in range( len(stat.c)):
@@ -100,25 +100,45 @@ def graficar(stat):
         ax.bar(xx, datos, width=0.8, align='center')
         ax.set_xticks(xx)
         ax.set_xticklabels(nombres)
+        plt.title(title) 
         plt.show()
 
 def probabilidad(self,pos):
         f= matriz.instanciar(self)
+        prob_total= matriz.instanciar(self)
         inf=complejo( (f.norma()**2),0)
+        h=None
         for i in range(len(self.c)):
                 c= self.c[i][0]
                 m= complejo(c.real,c.img)
                 sup= c.multiplica(m.conjugado())
                 if(i==pos):
-                        h=sup.divide(inf)
-                print((sup.divide(inf)).real*100)
+                        h=sup.divide(inf).real*100
+                prob_total.c[i][0]=complejo(sup.divide(inf).real*100,0)
         
-        return  "la probabilidad para la posicion dada es:",h.real*100
+        return  prob_total,h
+
 def transicionAmplitud(v1,v2):
         v1=normalizarKet(v1)
         v2=normalizarKet(v2)
-        v2.adjunta()
-        return v2.multiplica(v1)
+        return v2.productoInterno(v1)
+
+def valorEsperado(v,ob):
+        r1=ob.alcanceSobre(v)
+        return r1.productoInterno(v)
+
+def delta_Ob(observable,fi):
+        u=matriz.unitaria(len(observable.c))
+        res= (u.multiplicaEscalar(valorEsperado(fi,observable))).inversa()
+        return observable.suma(res)
+
+def varianza(observable,fi):
+        flag=matriz.iniciar(len(observable.c),len(observable.c))
+        if (conmutador(observable ,observable)==flag):
+                o1= delta_Ob(observable,fi)
+                o2= o1.multiplica(o1)
+                return valorEsperado(fi,o2)
+
 def normalizarKet(vector):
         f= matriz.instanciar(vector)
         inf= complejo(f.norma(),0)
@@ -130,3 +150,7 @@ def shots(matriz,vector,disparos):
         for i in range(disparos):
                 h= matriz.alcanceSobre(vector)
         return h
+def conmutador(ob1 ,ob2):
+        res1= ob1.multiplica(ob2)
+        res2= (ob2.multiplica(ob1)).inversa()
+        return res1.suma(res2)
