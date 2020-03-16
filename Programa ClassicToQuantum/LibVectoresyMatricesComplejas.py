@@ -131,7 +131,7 @@ class matriz:
 
         def norma(self):
                 m= matriz(self.c)
-                return round(math.sqrt(int(str(self.productoInterno(m)))),2)
+                return math.sqrt(int(str(self.productoInterno(m))))
 
         def distancia(self,v2):
                 return (self.suma( v2.inversa()).norma( ))
