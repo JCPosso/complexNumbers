@@ -53,7 +53,7 @@ class TestMathMethods(unittest.TestCase):
                                                    [[ 1/15,0]],[[2/15,0]],[[ 2/15,0]],[[ 1/15,0]],[[ 2/15,0]],[[ 2/15,0]],
                                                    [[ 1/15,0]],[[ 1/15,0]],[[ 1/15,0]]]))
                 """
-                Funcion para graficar ==>  graficar(estado)
+                Funcion para graficar ==>  graficar(estado,title)
                 """
         def test01_Multirendija_Cuantico_DosRendijas(self):
                 v= matriz([ [[-math.sqrt(6)/6,math.sqrt(6)/6]],[[-math.sqrt(6)/6,-math.sqrt(6)/6]],[[math.sqrt(6)/6,-math.sqrt(6)/6]] ])
@@ -69,7 +69,7 @@ class TestMathMethods(unittest.TestCase):
                                                         [ [1/6,0],[0,0],[1/3,0],[0,0],[0,0],[0,0],[0,0],[1,0] ] ]) )
                 
                 self.assertTrue(estado == matriz([ [[ 0,0 ]],[[ 0,0 ]],[[ 0,0 ]],[[1/6,0]],[[ 1/6,0]],[[ 0,0]],[[1/6,0]],[[ 1/6,0]] ]))
-                graficar(estado)
+                graficar(estado,"Fenómeno interferencia 2 rendijas cuantico")
         def test02_Multirendija_Cuantico_TresRendijas(self):
                 v= matriz([ [[-math.sqrt(10)/10,math.sqrt(10)/10]],[[-math.sqrt(10)/10,math.sqrt(10)/10]],[[-math.sqrt(10)/10,-math.sqrt(10)/10]],[[math.sqrt(10)/10,-math.sqrt(10)/10]],[[math.sqrt(10)/10,-math.sqrt(10)/10]] ])
                 matrizCaminos, estado     =    experimento_multirendija_cuantico(3,11,v)
@@ -94,7 +94,29 @@ class TestMathMethods(unittest.TestCase):
                                                 ,[[1/15,0]],[[ 1/15,0]],[[ 1/15,0]],
                                                 [[ 0,0 ]],[[ 0,0 ]],[[1/15,0]],[[ 0,0 ]],[[ 0,0 ]],
                                                 [[ 1/15,0]],[[ 1/15,0]],[[ 1/15,0]] ]))
-                graficar(estado)
-                
+                graficar(estado,"Fenómeno interferencia 3 rendijas Cuantico")
+        def test01_probabilidadEncontrarParticula_PosicionDada(self):
+                stateV=matriz ([ [[-3,-1]],[[0,-2]],[[0,1]],[[2,0]] ])
+                pos=2
+                n_probabilidades,probabilidadPedida=probabilidad(stateV,pos)
+                self.assertTrue(probabilidadPedida==5.263157894736841)
+        def test02_probabilidadEncontrarParticula_CualquierPosicion(self):
+                stateV=matriz ([ [[-3,-1]],[[0,-2]],[[0,1]],[[2,0]] ])
+                pos=2
+                n_probabilidades,probabilidadPedida=probabilidad(stateV,None)
+                self.assertTrue(n_probabilidades==matriz([ [[52.63157894736841,0]],[[21.052631578947363,0]],[[5.263157894736841,0]],[[21.052631578947363,0]] ]) )
+                graficar(n_probabilidades,"test02_probabilidadEncontrarParticula_CualquierPosicion")
+        def test01_probabilidad_Transitar_otra_Posicion(self):
+                c= complejo(math.sqrt(2)/2,0)
+                v1= matriz([ [[1,0]],[[0,1]] ])
+                v2= matriz([ [[0,1]],[[-1,0]] ] )
+                res= transicionAmplitud(v1,v2)
+                self.assertTrue(res== complejo(0,-1) )
+        def test02_probabilidad_Transitar_otra_Posicion(self):
+                c= complejo(math.sqrt(2)/2,0)
+                v1= matriz([ [[0,1]],[[-1,0]] ])
+                v2= matriz([ [[1,0]],[[-1,0]] ] )
+                res= transicionAmplitud(v1,v2)
+                self.assertTrue(res== complejo(1/2,1/2) )
 if __name__ == '__main__':
 	unittest.main()
