@@ -131,7 +131,7 @@ class matriz:
 
         def norma(self):
                 m= matriz(self.c)
-                return math.sqrt(int(str(self.productoInterno(m))))
+                return math.sqrt(self.productoInterno(m).real)
 
         def distancia(self,v2):
                 return (self.suma( v2.inversa()).norma( ))
@@ -177,11 +177,6 @@ class matriz:
                         vPrueba.c[i][0]=complejo(1,0)
                         
                 return self.alcanceSobre(vPrueba)==vPrueba
-        
-        def probabilidad(self,pos):
-                if(len(self.c[0])==1 ):
-                        return ( (pos.modulo()**2).real/(self.norma()**2) )
-                return "favor , ingrese un vector"
         def __str__(self):
                 s=""
                 for j in range(len(self.c)):
