@@ -179,5 +179,5 @@ def eigenValues(self):
         return eig1,eig2
 def projection(v, ev):
         res=transicionAmplitud(v,ev)
-        return res.modulo_cuadrado()
+        return round(res.modulo_cuadrado(),2)
 
