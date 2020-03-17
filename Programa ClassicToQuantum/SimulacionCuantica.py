@@ -68,7 +68,7 @@ def experimento_multirendija_cuantico(n_rendijas,n_blancos,vector_prob):
         #print(m)
         for i in range(len(m.c)):
                 for j in range(len(m.c[0])):
-                        m.c[i][j]=complejo(m.c[i][j].modulo()*m.c[i][j].modulo(),0)              
+                        m.c[i][j]=complejo(m.c[i][j].modulo_cuadrado(),0)              
         v= matriz.iniciar(len(m.c),1)
         v.c[0][0]=complejo(1,0)
         stat= m.alcanceSobre(v)
@@ -133,12 +133,15 @@ def delta_Ob(observable,fi):
         return observable.suma(res)
 
 def varianza(observable,fi):
+        o1= delta_Ob(observable,fi)
+        o2= o1.multiplica(o1)
+        return valorEsperado(fi,o2)
+def sistema_estadistico(observable,fi):
         flag=matriz.iniciar(len(observable.c),len(observable.c))
         if (conmutador(observable ,observable)==flag):
-                o1= delta_Ob(observable,fi)
-                o2= o1.multiplica(o1)
-                return valorEsperado(fi,o2)
-
+                media= valorEsperado(fi,observable).real
+                var=varianza(observable,fi).real
+                return media,var
 def normalizarKet(vector):
         f= matriz.instanciar(vector)
         inf= complejo(f.norma(),0)
@@ -154,3 +157,27 @@ def conmutador(ob1 ,ob2):
         res1= ob1.multiplica(ob2)
         res2= (ob2.multiplica(ob1)).inversa()
         return res1.suma(res2)
+def eigenValues(self):
+        #haallamos polinomio característico
+        lon=len(self.c)+1
+        s=[0]*(lon)
+        pol=[0]*(lon)
+        for i in range(1,lon):
+                r= self.potencia(i)
+                s[i]=r.trace().real
+        pol[0]=1
+        pol[1]=-s[1]
+        for i in range(2,lon):
+                pol[i]=-s[i]/i
+                for j in range(1,i):
+                        pol[i]-=s[i-j]*pol[j]/i
+
+        # resolvemos polinomio grdo 2
+        fun= math.sqrt(pol[1]**2-(4*pol[0]*pol[2]) )
+        eig1= (-p[1]+fun)/(a*p[0])
+        eig2= (-p[1]-fun)/(a*p[0])
+        return eig1,eig2
+def projection(v, ev):
+        res=transicionAmplitud(v,ev)
+        return res.modulo_cuadrado()
+
