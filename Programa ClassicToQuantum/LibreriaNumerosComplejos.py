@@ -70,6 +70,8 @@ class complejo:
                 '''
                 mod= math.sqrt(self.real**2+self.img**2)
                 return  mod
+        def modulo_cuadrado(self):
+                return self.real**2+self.img**2
         def conjugado(self):
                 '''
                 Retorna conjugado del complejo.
