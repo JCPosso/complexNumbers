@@ -2,6 +2,8 @@
 import matplotlib.pyplot as plt
 import math;
 from LibreriaNumerosComplejos import *
+import numpy as np
+from numpy import linalg as al
 """Librería computación Cuántica: Números complejos
    librería para hacer operaciones entre vectores y matrices de  complejos.
    @author (Juan Camilo Posso G.) 
@@ -177,11 +179,36 @@ class matriz:
                         vPrueba.c[i][0]=complejo(1,0)
                         
                 return self.alcanceSobre(vPrueba)==vPrueba
+        def eigen(self):
+                a=[]
+                for i in range(len(self.c)):
+                        a.append([ [0,0] ]*len(self.c[0]))
+                for i in range(len(a)):
+                        for h in range(len(a[0])):
+                                a[i][h]=complex(self.c[i][h].real,self.c[i][h].img)
+                ob= np.array(a)
+                eig_valu, eig_vect= al.eig(ob)
+                
+
+                vectores=[]
+                for i in range(len(eig_vect)):
+                        vectores.append(matriz.iniciar(len(eig_vect[0]),1))
+                for i in range(len(vectores)):
+                        for j in range(len(vectores[0].c)):
+                                vectores[i].c[j][0]=complejo(eig_vect[i][j].real,eig_vect[i][j].imag)
+                                
+                        
+                e_val=matriz.iniciar(len(eig_valu),1)
+                for i in range(len(e_val.c)):
+                                e_val.c[i][0]=complejo(eig_valu[i].real,eig_valu[i].imag)
+                                
+                return  e_val, vectores
         def __str__(self):
                 s=""
-                for j in range(len(self.c)):
-                        s+="[ "
-                        for k in range(len(self.c[0])):
-                                s+=str(self.c[j][k])+" "
-                        s+=']\n'
+                if isinstance(self,matriz):
+                        for j in range(len(self.c)):
+                                s+="[ "
+                                for k in range(len(self.c[0])):
+                                        s+=str(self.c[j][k])+" "
+                                s+=']\n'
                 return s
