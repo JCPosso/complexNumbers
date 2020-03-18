@@ -130,5 +130,13 @@ class TestMathMethods(unittest.TestCase):
                 media,varianza= sistema_estadistico(ob,v2)
                 self.assertTrue(round(media,2)==1.5)
                 self.assertTrue(round(varianza,2)==1.25 )
+        def test01_probbilidad_transito_vectores_propios(self):
+                fi= matriz([ [[1/math.sqrt(2),0]],[[1/math.sqrt(2),0]] ])
+                a= matriz([ [ [-1,0],[0,-1] ],[ [0,1],[1,0] ] ])
+                valores_propios,vectores_propios=a.eigen()
+                res1=probbilidad_transitoVec(fi,vectores_propios[0])
+                res2=probbilidad_transitoVec(fi,vectores_propios[1])
+                self.assertTrue(res1==0.5)
+                self.assertTrue(res2==0.5)
 if __name__ == '__main__':
 	unittest.main()
