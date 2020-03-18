@@ -1,5 +1,6 @@
 #-*- coding: utf-8 -*-
 import matplotlib.pyplot as plt
+import numpy as np
 import math;
 from LibVectoresyMatricesComplejas import *
 def make_matrix(tam_matriz,n_blancosPorRendija,n_rendijas,n_blancos , b_central,vector):
@@ -157,27 +158,7 @@ def conmutador(ob1 ,ob2):
         res1= ob1.multiplica(ob2)
         res2= (ob2.multiplica(ob1)).inversa()
         return res1.suma(res2)
-def eigenValues(self):
-        #haallamos polinomio característico
-        lon=len(self.c)+1
-        s=[0]*(lon)
-        pol=[0]*(lon)
-        for i in range(1,lon):
-                r= self.potencia(i)
-                s[i]=r.trace().real
-        pol[0]=1
-        pol[1]=-s[1]
-        for i in range(2,lon):
-                pol[i]=-s[i]/i
-                for j in range(1,i):
-                        pol[i]-=s[i-j]*pol[j]/i
-
-        # resolvemos polinomio grdo 2
-        fun= math.sqrt(pol[1]**2-(4*pol[0]*pol[2]) )
-        eig1= (-p[1]+fun)/(a*p[0])
-        eig2= (-p[1]-fun)/(a*p[0])
-        return eig1,eig2
-def projection(v, ev):
+def probbilidad_transitoVec(v, ev):
         res=transicionAmplitud(v,ev)
         return round(res.modulo_cuadrado(),2)
 
