@@ -138,5 +138,22 @@ class TestMathMethods(unittest.TestCase):
                 res2=probbilidad_transitoVec(fi,vectores_propios[1])
                 self.assertTrue(res1==0.5)
                 self.assertTrue(res2==0.5)
+        def test01_dinamica(self):
+                array=[]
+                u1= matriz([ [ [0,0], [1,0]],[[1,0],[0,0]]])
+                u2= matriz([ [ [math.sqrt(2)/2,0],[math.sqrt(2)/2,0]],[[math.sqrt(2)/2,0],[math.sqrt(2)/2,0]] ])
+                array.append(u1)
+                array.append(u2)
+                fi=matriz([ [[1,0]],[[0,0]] ])
+                res=dinamica(1,array,fi)
+                #go back!
+                u1= matriz([ [ [0,0], [1,0]],[[1,0],[0,0]]])
+                u2= matriz([ [ [math.sqrt(2)/2,0],[math.sqrt(2)/2,0]],[[math.sqrt(2)/2,0],[math.sqrt(2)/2,0]] ])
+                array=[]
+                array.append(u2)
+                array.append(u1)
+                res2=dinamica(1,array,fi)
+                
+                self.assertTrue(res==res2)
 if __name__ == '__main__':
 	unittest.main()
